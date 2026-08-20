@@ -335,10 +335,13 @@ function aplicarPlanilha(txt){
   // Arquivos: célula vazia herda os arquivos do cronograma embutido (mesma eletiva + data).
   // Escreva "-" na célula para dizer explicitamente que o evento não tem arquivo.
   linhas.forEach(l=>{
+    // "-" na célula = este evento não tem arquivo nenhum
     if(l.arquivos.length===1 && l.arquivos[0].nome==="-" && !l.arquivos[0].url){l.arquivos=[];return}
+    // só conta o que tem link de verdade; nomes sem URL não valem
+    l.arquivos=l.arquivos.filter(a=>a.url);
     if(l.arquivos.length)return;
     const base=BASE.aulas.find(a=>a.data===l.data && a.disc===l.disc);
-    if(base && base.arquivos && base.arquivos.length) l.arquivos=base.arquivos;
+    if(base && base.arquivos && base.arquivos.length) l.arquivos=base.arquivos.filter(a=>a.url);
   });
   ITENS=montarItens(linhas);
   return linhas.length;
