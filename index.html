@@ -4,300 +4,583 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Laboratório de Química — Eletivas 2026/2</title>
-<meta name="description" content="Calendário do laboratório das eletivas de química: aulas, montagem, desmontagem e materiais.">
+<meta name="description" content="Calendário do laboratório de química: aulas, montagem, desmontagem, materiais e roteiros.">
 <style>
-:root{--bg:#f7f6f3;--card:#fff;--ink:#1b1b19;--mut:#6d6c66;--line:#e4e2dc;
---qnc:#a8541a;--qncb:#fcf1e6;--qadl:#166b73;--qadlb:#e6f3f3;
---mont:#8a5a00;--montb:#fbf3df;--desm:#5c5b74;--desmb:#eeeef4;
---late:#a02a2f;--lateb:#fbeaea;--soon:#8a6100;--soonb:#fdf5e0;--ok:#2c6a43;--okb:#eaf3ec;}
-@media(prefers-color-scheme:dark){:root{--bg:#151517;--card:#1e1e21;--ink:#eceae5;--mut:#9b998f;--line:#31313a;
---qnc:#e5a75a;--qncb:#332510;--qadl:#68c4cb;--qadlb:#0e2c2e;
---mont:#e0b95c;--montb:#312811;--desm:#a9a8c4;--desmb:#24242c;
---late:#ef8b8f;--lateb:#391618;--soon:#e6bf5c;--soonb:#312a11;--ok:#7ec79a;--okb:#152b1e;}}
+:root{
+ --bg:#f7f6f3; --card:#fff; --ink:#1b1b19; --mut:#6d6c66; --line:#e4e2dc; --line2:#efedE7;
+ --qnc:#a8541a; --qncb:#fcf1e6; --qadl:#166b73; --qadlb:#e6f3f3;
+ --mont:#8a5a00; --montb:#fbf3df; --desm:#5c5b74; --desmb:#eeeef4;
+ --late:#a02a2f; --lateb:#fbeaea; --soon:#8a6100; --soonb:#fdf5e0; --ok:#2c6a43; --okb:#eaf3ec;
+ --new:#5a3d8a; --newb:#f0ebf8;
+}
+@media(prefers-color-scheme:dark){:root{
+ --bg:#151517; --card:#1e1e21; --ink:#eceae5; --mut:#9b998f; --line:#31313a; --line2:#26262c;
+ --qnc:#e5a75a; --qncb:#332510; --qadl:#68c4cb; --qadlb:#0e2c2e;
+ --mont:#e0b95c; --montb:#312811; --desm:#a9a8c4; --desmb:#24242c;
+ --late:#ef8b8f; --lateb:#391618; --soon:#e6bf5c; --soonb:#312a11; --ok:#7ec79a; --okb:#152b1e;
+ --new:#c0a8e8; --newb:#251d33;
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-.w{max-width:900px;margin:0 auto;padding:26px 18px 70px}
-h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:-.01em}
-.sub{color:var(--mut);font-size:.92rem;margin:0}
-.leg{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0 0;font-size:.8rem;color:var(--mut)}
-.leg span{display:flex;align-items:center;gap:6px}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:22px 16px 70px}
+a{color:inherit}
+h1{font-size:1.4rem;margin:0 0 3px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:.9rem;margin:0}
+.leg{display:flex;gap:13px;flex-wrap:wrap;margin:14px 0 0;font-size:.78rem;color:var(--mut)}
+.leg span{display:flex;align-items:center;gap:5px}
 .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
-.box{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 15px;font-size:.87rem;color:var(--mut);margin-top:16px}
-.bar{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0 4px}
-.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 13px;font-size:.84rem;cursor:pointer}
+.box{background:var(--card);border:1px solid var(--line);border-radius:11px;
+ padding:11px 14px;font-size:.86rem;color:var(--mut);margin-top:14px}
+.bar{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 12px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);
+ border-radius:999px;padding:6px 13px;font-size:.84rem;cursor:pointer}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-h2{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:28px 0 9px;font-weight:650}
-.it{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;
-padding:12px 15px;margin-bottom:8px;display:grid;grid-template-columns:66px 1fr;gap:14px;align-items:start}
+.spacer{flex:1}
+
+/* ---------- calendário ---------- */
+.navmes{display:flex;align-items:center;gap:10px;margin:6px 0 12px}
+.navmes b{font-size:1.05rem;min-width:190px}
+.navmes button{border:1px solid var(--line);background:var(--card);color:var(--ink);
+ border-radius:9px;width:34px;height:34px;font-size:1rem;cursor:pointer;line-height:1}
+.navmes button:disabled{opacity:.35;cursor:default}
+.grade{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);
+ border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.dw{background:var(--card);padding:7px 4px;text-align:center;font-size:.7rem;
+ text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:650}
+.dia{background:var(--card);min-height:104px;min-width:0;padding:5px 5px 7px;display:flex;flex-direction:column;gap:3px}
+.dia.fora{background:var(--line2)}
+.dia.fds .num{color:var(--mut)}
+.dia.hoje{box-shadow:inset 0 0 0 2px var(--ink)}
+.num{font-size:.8rem;font-weight:650;color:var(--mut);padding:1px 3px}
+.dia.hoje .num{color:var(--ink)}
+.feriado{font-size:.63rem;color:var(--mut);background:var(--desmb);border-radius:4px;
+ padding:2px 4px;line-height:1.25}
+.ev{display:block;width:100%;max-width:100%;min-width:0;text-align:left;border:0;border-left:3px solid;border-radius:4px;
+ padding:3px 5px;font-size:.68rem;line-height:1.25;cursor:pointer;font-family:inherit;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ev:hover{filter:brightness(.96)}
+.ev.qnc{background:var(--qncb);color:var(--qnc);border-color:var(--qnc)}
+.ev.qadl{background:var(--qadlb);color:var(--qadl);border-color:var(--qadl)}
+.ev.montagem{background:var(--montb);color:var(--mont);border-color:var(--mont);border-left-style:dashed}
+.ev.desmontagem{background:var(--desmb);color:var(--desm);border-color:var(--desm);border-left-style:dashed}
+.ev.novo{background:var(--newb);color:var(--new);border-color:var(--new)}
+
+/* ---------- lista ---------- */
+h2{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);
+ margin:24px 0 9px;font-weight:650}
+.it{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);
+ border-radius:10px;padding:11px 14px;margin-bottom:8px;display:grid;
+ grid-template-columns:60px 1fr;gap:13px;align-items:start;cursor:pointer;text-align:left;
+ width:100%;font-family:inherit;font-size:inherit;color:inherit}
 .it.past{opacity:.45}
-.it.hoje{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset;border-left-width:4px}
-.it.aula-qnc{border-left-color:var(--qnc)} .it.aula-qadl{border-left-color:var(--qadl)}
+.it.qnc{border-left-color:var(--qnc)} .it.qadl{border-left-color:var(--qadl)}
 .it.montagem{border-left-color:var(--mont);border-style:dashed}
 .it.desmontagem{border-left-color:var(--desm);border-style:dashed}
-.dt{text-align:center;border-right:1px solid var(--line);padding-right:10px}
-.dd{font-size:1.35rem;font-weight:680;line-height:1}
-.mm{font-size:.72rem;text-transform:uppercase;color:var(--mut)}
-.dw{font-size:.71rem;color:var(--mut);margin-top:2px}
-.tg{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px}
-.t{font-size:.68rem;font-weight:650;letter-spacing:.03em;padding:3px 7px;border-radius:5px}
+.it.novo{border-left-color:var(--new)}
+.dt{text-align:center;border-right:1px solid var(--line);padding-right:9px}
+.dd{font-size:1.3rem;font-weight:680;line-height:1}
+.mm{font-size:.7rem;text-transform:uppercase;color:var(--mut)}
+.wd{font-size:.7rem;color:var(--mut);margin-top:2px}
+.tg{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
+.t{font-size:.67rem;font-weight:650;letter-spacing:.03em;padding:3px 7px;border-radius:5px}
 .t-qnc{color:var(--qnc);background:var(--qncb)} .t-qadl{color:var(--qadl);background:var(--qadlb)}
 .t-mont{color:var(--mont);background:var(--montb)} .t-desm{color:var(--desm);background:var(--desmb)}
-.t-x{color:var(--mut);background:var(--desmb)} .t-new{color:var(--ok);background:var(--okb)}
+.t-new{color:var(--new);background:var(--newb)} .t-x{color:var(--mut);background:var(--desmb)}
 .tt{font-weight:600;margin:0}
-.mat{font-size:.85rem;color:var(--mut);margin:6px 0 0}
-details{margin-top:7px}
-summary{font-size:.8rem;color:var(--mut);cursor:pointer;font-weight:600;list-style:none}
-summary::-webkit-details-marker{display:none}
-summary::before{content:"▸ ";}
-details[open] summary::before{content:"▾ ";}
-details .db{font-size:.85rem;color:var(--mut);margin:7px 0 0;padding-left:13px;border-left:2px solid var(--line)}
-details .db b{color:var(--ink)}
-.fonte{font-size:.76rem;color:var(--mut);margin-top:8px;font-style:italic}
-.pz{margin-top:8px;font-size:.82rem;padding:6px 10px;border-radius:8px;display:inline-block}
-.p-late{background:var(--lateb);color:var(--late)}.p-soon{background:var(--soonb);color:var(--soon)}
-.p-ok{background:var(--okb);color:var(--ok)}.p-done{background:var(--desmb);color:var(--mut)}
-.fer{background:transparent;border:1px dashed var(--line);color:var(--mut);text-align:center;
-padding:8px;border-radius:9px;margin-bottom:8px;font-size:.83rem}
-footer{margin-top:32px;border-top:1px solid var(--line);padding-top:14px;font-size:.79rem;color:var(--mut)}
-footer code{background:var(--desmb);padding:1px 5px;border-radius:4px;font-size:.92em}
-button.copy{border:1px solid currentColor;background:transparent;color:inherit;border-radius:7px;
-padding:3px 9px;font-size:.76rem;cursor:pointer;font-weight:600;margin-left:9px}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);max-width:620px;width:92%;padding:20px}
+.pz{margin-top:7px;font-size:.8rem;padding:5px 9px;border-radius:8px;display:inline-block}
+.p-late{background:var(--lateb);color:var(--late)} .p-soon{background:var(--soonb);color:var(--soon)}
+.p-ok{background:var(--okb);color:var(--ok)} .p-done{background:var(--desmb);color:var(--mut)}
+
+/* ---------- detalhe ---------- */
+.voltar{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);
+ background:var(--card);color:var(--ink);border-radius:9px;padding:6px 13px;font-size:.85rem;
+ cursor:pointer;font-family:inherit;margin-bottom:16px}
+.det{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.det h1{font-size:1.35rem;margin:6px 0 4px;line-height:1.3}
+.det .quando{color:var(--mut);font-size:.92rem}
+.sec{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.sec h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);
+ margin:0 0 7px;font-weight:650}
+.sec p{margin:0;font-size:.93rem}
+.arq{display:flex;flex-direction:column;gap:7px}
+.arq a{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:9px;
+ padding:9px 12px;text-decoration:none;font-size:.9rem;background:var(--bg)}
+.arq a:hover{border-color:var(--mut)}
+.arq .ic{font-size:1rem;opacity:.6}
+.arq .sem{font-size:.87rem;color:var(--mut);font-style:italic}
+.com{border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:8px;background:var(--bg)}
+.com .quem{font-size:.8rem;color:var(--mut);margin-bottom:3px}
+.com .quem b{color:var(--ink);font-weight:650}
+.com p{font-size:.9rem;white-space:pre-wrap}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);border:0;border-radius:9px;
+ padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit}
+.aviso{font-size:.85rem;color:var(--mut);background:var(--bg);border:1px dashed var(--line);
+ border-radius:9px;padding:11px 13px}
+
+.err{background:var(--lateb);color:var(--late);border-radius:9px;padding:9px 13px;
+ font-size:.84rem;margin-top:12px}
+.fonte-info{font-size:.78rem;color:var(--mut);margin-top:6px}
+footer{margin-top:30px;border-top:1px solid var(--line);padding-top:13px;font-size:.78rem;color:var(--mut)}
+footer code{background:var(--desmb);padding:1px 5px;border-radius:4px}
+.hide{display:none!important}
+@media(max-width:700px){
+ .dia{min-height:76px;padding:3px}
+ .ev{font-size:.6rem;padding:2px 3px;border-left-width:2px}
+ .navmes b{min-width:140px;font-size:.95rem}
+ .det{padding:16px 15px}
+ .it{grid-template-columns:52px 1fr;gap:10px}
+}
+/* dialogo de e-mail (modo professor) */
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);
+ max-width:620px;width:92%;padding:20px}
 dialog::backdrop{background:rgba(0,0,0,.45)}
-dialog textarea{width:100%;min-height:300px;font:13px/1.5 ui-monospace,Menlo,monospace;border:1px solid var(--line);
-border-radius:9px;padding:11px;background:var(--bg);color:var(--ink);resize:vertical}
+dialog textarea{width:100%;min-height:300px;font:13px/1.5 ui-monospace,Menlo,monospace;
+ border:1px solid var(--line);border-radius:9px;padding:11px;background:var(--bg);color:var(--ink)}
 dialog .row{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
-dialog button{border-radius:8px;padding:7px 14px;font-size:.86rem;cursor:pointer;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+dialog button{border-radius:8px;padding:7px 14px;font-size:.86rem;cursor:pointer;
+ border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 dialog button.pri{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
-.err{background:var(--lateb);color:var(--late);border-radius:9px;padding:9px 13px;font-size:.84rem;margin-top:12px}
-@media(max-width:540px){.it{grid-template-columns:54px 1fr;gap:10px}.dd{font-size:1.15rem}}
 </style>
 </head>
-<body><div class="w">
-<h1>Laboratório de Química — Eletivas 2026/2</h1>
-<p class="sub">Química na Cozinha (1ª série · terças) · Química além dos Livros (2ª série · quintas) — 3ª e 4ª aulas da tarde</p>
+<body>
+<div class="w">
 
-<div class="leg">
-  <span><i class="dot" style="background:var(--qnc)"></i> Aula QNC</span>
-  <span><i class="dot" style="background:var(--qadl)"></i> Aula QADL</span>
-  <span><i class="dot" style="background:var(--mont)"></i> Montagem (véspera)</span>
-  <span><i class="dot" style="background:var(--desm)"></i> Desmontagem e limpeza</span>
+<!-- ============ VISÃO PRINCIPAL ============ -->
+<div id="principal">
+  <header>
+    <h1>Laboratório de Química — Eletivas 2026/2</h1>
+    <p class="sub">Química na Cozinha (1ª série · terças) · Química além dos Livros (2ª série · quintas) — 3ª e 4ª aulas da tarde</p>
+  </header>
+
+  <div class="leg">
+    <span><i class="dot" style="background:var(--qnc)"></i> Aula QNC</span>
+    <span><i class="dot" style="background:var(--qadl)"></i> Aula QADL</span>
+    <span><i class="dot" style="background:var(--mont)"></i> Montagem</span>
+    <span><i class="dot" style="background:var(--desm)"></i> Desmontagem</span>
+    <span><i class="dot" style="background:var(--new)"></i> Atividade avulsa</span>
+  </div>
+
+  <div class="box"><b>Para o Christian:</b> cada prática aparece três vezes — a <b>montagem</b> no dia útil anterior,
+  a <b>aula</b>, e a <b>desmontagem e limpeza</b> ao final. Clique em qualquer uma para ver materiais por bancada,
+  itens de uso comum, cuidados, o roteiro em PDF e os comentários. Os laboratórios têm <b>8 bancadas cada</b>.
+  O aviso formal vai por e-mail com <b>4 dias úteis</b> de antecedência.</div>
+
+  <div id="erro"></div>
+
+  <div class="bar">
+    <button class="chip" data-g="vis" data-v="cal" aria-pressed="true">Calendário</button>
+    <button class="chip" data-g="vis" data-v="lista" aria-pressed="false">Lista</button>
+    <span class="spacer"></span>
+    <button class="chip" data-g="disc" data-v="todas" aria-pressed="true">Todas</button>
+    <button class="chip" data-g="disc" data-v="QNC" aria-pressed="false">QNC</button>
+    <button class="chip" data-g="disc" data-v="QADL" aria-pressed="false">QADL</button>
+  </div>
+
+  <div id="vcal">
+    <div class="navmes">
+      <button id="ant" title="Mês anterior">‹</button>
+      <button id="prox" title="Próximo mês">›</button>
+      <b id="mesnome"></b>
+      <span class="spacer"></span>
+      <button class="chip" id="hoje">Hoje</button>
+    </div>
+    <div class="grade" id="grade"></div>
+  </div>
+
+  <div id="vlista" class="hide"></div>
+
+  <h2>Segundas e quintas (manhã) — laboratório com os 2ºs anos</h2>
+  <div class="box">
+  <b>Aulas regulares dos 2ºs anos:</b> segundas e quintas <b>pela manhã</b>, nos blocos da
+  <b>2ª e 3ª aulas</b> e da <b>5ª e 6ª aulas</b> — quatro turmas ao todo. As datas de cada prática
+  entram no calendário assim que forem definidas.
+  <br><br>
+  <b>Atenção às quintas:</b> o laboratório é usado pelos 2ºs anos de manhã e pela Química além dos Livros
+  à tarde, no mesmo dia. A montagem da eletiva precisa caber entre o fim da 6ª aula e o início da
+  3ª aula da tarde.
+  <br><br>
+  <b>Atenção às terças:</b> as práticas da Química na Cozinha no laboratório de trás (esferificação, 15/09)
+  exigem retirar das bancadas o experimento dos 2ºs anos, que precisa estar remontado até <b>quarta-feira</b>.
+  </div>
+
+  <footer id="rod"></footer>
 </div>
 
-<div class="box"><b>Para o Christian:</b> cada prática tem um item de <b>montagem no dia útil anterior</b> e um de <b>desmontagem ao final da aula</b>. As listas vêm dos roteiros e das fichas de preparação do laboratório — o arquivo de origem está indicado no fim de cada bloco de informações. Os laboratórios trabalham com <b>8 bancadas cada</b>. O aviso formal é enviado por e-mail com <b>4 dias úteis</b> de antecedência.</div>
+<!-- ============ DETALHE ============ -->
+<div id="detalhe" class="hide"></div>
 
-<div id="erro"></div>
-
-<div class="bar">
-  <button class="chip" data-g="disc" data-v="todas" aria-pressed="true">Todas</button>
-  <button class="chip" data-g="disc" data-v="QNC" aria-pressed="false">Química na Cozinha</button>
-  <button class="chip" data-g="disc" data-v="QADL" aria-pressed="false">Química além dos Livros</button>
-</div>
-<div class="bar">
-  <button class="chip" data-g="vis" data-v="tudo" aria-pressed="true">Agenda completa</button>
-  <button class="chip" data-g="vis" data-v="praticas" aria-pressed="false">Só as aulas</button>
-  <button class="chip" data-g="vis" data-v="monitor" aria-pressed="false">Só o que envolve o Christian</button>
-  <button class="chip" data-g="pass" data-v="1" aria-pressed="false">Esconder o que já passou</button>
 </div>
 
-<div id="lista"></div>
-
-<h2>Segundas e quintas (manhã) — laboratório com os 2ºs anos</h2>
-<div class="note">
-<b>Aulas regulares dos 2ºs anos, no laboratório:</b> segundas e quintas <b>pela manhã</b>,
-nos blocos da <b>2ª e 3ª aulas</b> e da <b>5ª e 6ª aulas</b> — quatro turmas ao todo.
-As datas de cada prática ainda não estão definidas; assim que saírem, elas entram nesta agenda
-com o mesmo cálculo de prazo. Para uma atividade na <b>segunda</b>, o aviso ao Christian vai até a
-<b>terça da semana anterior</b>; para uma na <b>quinta</b>, até a <b>sexta anterior</b>
-(descontando feriados).
-<br><br>
-<b>Atenção às quintas:</b> o laboratório é usado pelos 2ºs anos de manhã e pela
-Química além dos Livros à tarde, no mesmo dia. A montagem da eletiva precisa caber entre
-o fim da 6ª aula e o início da 3ª aula da tarde — ou a prática dos 2ºs anos precisa ficar
-montada de um jeito que não atrapalhe.
-<br><br>
-<b>Atenção às terças:</b> as práticas da Química na Cozinha no laboratório de trás
-(como a esferificação, em 15/09) exigem retirar das bancadas o experimento dos 2ºs anos.
-Ele precisa estar remontado até <b>quarta-feira</b>, a tempo das aulas de quinta de manhã.
-</div>
-
-<h2>Avaliações</h2>
-<div id="aval"></div>
-
-<footer id="rod"></footer>
-</div>
 <dialog id="dlg">
   <div style="font-weight:650;margin-bottom:8px">E-mail para o Christian</div>
   <textarea id="txt" spellcheck="false"></textarea>
-  <div class="row"><button onclick="dlg.close()">Fechar</button>
+  <div class="row"><button onclick="document.getElementById('dlg').close()">Fechar</button>
   <button class="pri" id="cp">Copiar</button></div>
 </dialog>
 
 <script>
-const D = {"itens": [{"id": "QNC-2026-07-28", "tipo": "aula", "disc": "QNC", "data": "2026-07-28", "semana": "1ª", "titulo": "Apresentação da disciplina e dos espaços; organização dos trabalhos de macronutrientes", "local": "Sala / Laboratório", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-08-04", "tipo": "aula", "disc": "QNC", "data": "2026-08-04", "semana": "2ª", "titulo": "Orientação do trabalho de macronutrientes e planejamento da parte prática", "local": "Sala / Laboratório", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-08-11", "tipo": "aula", "disc": "QNC", "data": "2026-08-11", "semana": "3ª", "titulo": "Apresentação do trabalho sobre macronutrientes (demonstração de cada grupo)", "local": "Sala", "monitor": "nao", "materiais": "Cada grupo traz o seu material em bandejas. Fibras: 2 copos transparentes, água, aveia em flocos ou chia. Proteínas: copo, leite integral, vinagre branco ou limão. Sais minerais e vitaminas: maçã, faca, suco de limão. Carboidratos: batata, pão, queijo e maçã, solução de iodo (Povidine ou tintura de iodo) e conta-gotas. Lipídios: pote de vidro com tampa, água, óleo de cozinha, mostarda ou gema de ovo.", "comum": "", "info": "Cada grupo faz uma demonstração química ao vivo ou gravada e explica a teoria enquanto o resultado aparece. Luvas e jaleco para reforçar a postura laboratorial.", "prep": "", "fonte": "Experimento.pdf", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-08-18", "tipo": "aula", "disc": "QNC", "data": "2026-08-18", "semana": "4ª", "titulo": "Prática 1 — Fermentação biológica: produção de tepache", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 abacaxi maduro · 1 pote de vidro lavado · 1 colher · 1 faca grande e 1 faca pequena · 1 bacia branca para cortar o abacaxi", "comum": "Mesa do professor: açúcar refinado · temperos (gengibre, canela, cravo) · 1 rolo de filme PVC · 1 litro de água filtrada por grupo", "info": "Higienização rigorosa de tudo (a bacia lavada com sabão): os alunos vão consumir o produto da fermentação. A bebida fermenta de 48 a 72 h em temperatura ambiente (20–30 °C), em local escuro e arejado — é preciso reservar esse espaço.", "prep": "ENVASE (quinta ou sexta seguinte): depois da fermentação, coar o tepache e transferir para os frascos PET já separados no laboratório. O professor Henrique repassa pessoalmente as instruções do envase à equipe técnica.", "fonte": "Roteiro experimento 1 · Preparação do laboratório (arquivo “Confeitando um bolo”)", "prazo": "2026-08-12", "dow": "ter"}, {"id": "QNC-2026-08-18-m", "tipo": "montagem", "disc": "QNC", "data": "2026-08-17", "semana": "4ª", "titulo": "Montagem para a aula de 18/08 — Fermentação biológica: produção de tepache", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 abacaxi maduro · 1 pote de vidro lavado · 1 colher · 1 faca grande e 1 faca pequena · 1 bacia branca para cortar o abacaxi", "comum": "Mesa do professor: açúcar refinado · temperos (gengibre, canela, cravo) · 1 rolo de filme PVC · 1 litro de água filtrada por grupo", "info": "Higienização rigorosa de tudo (a bacia lavada com sabão): os alunos vão consumir o produto da fermentação. A bebida fermenta de 48 a 72 h em temperatura ambiente (20–30 °C), em local escuro e arejado — é preciso reservar esse espaço.", "prep": "ENVASE (quinta ou sexta seguinte): depois da fermentação, coar o tepache e transferir para os frascos PET já separados no laboratório. O professor Henrique repassa pessoalmente as instruções do envase à equipe técnica.", "fonte": "Roteiro experimento 1 · Preparação do laboratório (arquivo “Confeitando um bolo”)", "prazo": null, "dow": "seg"}, {"id": "QNC-2026-08-18-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-08-18", "semana": "4ª", "titulo": "Desmontagem e limpeza — Fermentação biológica: produção de tepache", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "ENVASE (quinta ou sexta seguinte): depois da fermentação, coar o tepache e transferir para os frascos PET já separados no laboratório. O professor Henrique repassa pessoalmente as instruções do envase à equipe técnica.", "fonte": "Roteiro experimento 1 · Preparação do laboratório (arquivo “Confeitando um bolo”)", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-08-25", "tipo": "aula", "disc": "QNC", "data": "2026-08-25", "semana": "5ª", "titulo": "Prática 2 — Coloides na cozinha: espuma (chantilly) e confeitagem do bolo", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 tigela (bowl) grande · 1 batedor de arame (fouet) · 1 faca grande · 1 faca pequena · 1 faca lisa de confeitar · espátulas de confeitar · 1 bandeja grande", "comum": "Mistura industrial para chantilly (~500 g por grupo, bem gelada) · corante alimentício em gel · 1 bolo pré-assado por grupo. O recheio é trazido por cada grupo.", "info": "PREPARO PRÉVIO: as tigelas grandes e as bandejas devem ser lavadas e secas na aula imediatamente anterior a esta. A mistura para chantilly precisa estar em temperatura muito baixa — sem isso a emulsão não estabiliza. Bater até o ponto de picos firmes; passar do ponto vira manteiga.", "prep": "LIMPEZA: o chantilly tem alto teor de gordura. Tigelas, espátulas, facas, bicos e a bandeja da escola precisam de detergente desengordurante e esponja antes da devolução. Restos de bolo e creme vão para o lixo orgânico.", "fonte": "Roteiro experimento 2 — Coloides e chantilly", "prazo": "2026-08-19", "dow": "ter"}, {"id": "QNC-2026-08-25-m", "tipo": "montagem", "disc": "QNC", "data": "2026-08-24", "semana": "5ª", "titulo": "Montagem para a aula de 25/08 — Coloides na cozinha: espuma (chantilly) e confeitagem do bolo", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 tigela (bowl) grande · 1 batedor de arame (fouet) · 1 faca grande · 1 faca pequena · 1 faca lisa de confeitar · espátulas de confeitar · 1 bandeja grande", "comum": "Mistura industrial para chantilly (~500 g por grupo, bem gelada) · corante alimentício em gel · 1 bolo pré-assado por grupo. O recheio é trazido por cada grupo.", "info": "PREPARO PRÉVIO: as tigelas grandes e as bandejas devem ser lavadas e secas na aula imediatamente anterior a esta. A mistura para chantilly precisa estar em temperatura muito baixa — sem isso a emulsão não estabiliza. Bater até o ponto de picos firmes; passar do ponto vira manteiga.", "prep": "LIMPEZA: o chantilly tem alto teor de gordura. Tigelas, espátulas, facas, bicos e a bandeja da escola precisam de detergente desengordurante e esponja antes da devolução. Restos de bolo e creme vão para o lixo orgânico.", "fonte": "Roteiro experimento 2 — Coloides e chantilly", "prazo": null, "dow": "seg"}, {"id": "QNC-2026-08-25-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-08-25", "semana": "5ª", "titulo": "Desmontagem e limpeza — Coloides na cozinha: espuma (chantilly) e confeitagem do bolo", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "LIMPEZA: o chantilly tem alto teor de gordura. Tigelas, espátulas, facas, bicos e a bandeja da escola precisam de detergente desengordurante e esponja antes da devolução. Restos de bolo e creme vão para o lixo orgânico.", "fonte": "Roteiro experimento 2 — Coloides e chantilly", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-09-01", "tipo": "aula", "disc": "QNC", "data": "2026-09-01", "semana": "6ª", "titulo": "Prática 3 — Coagulação de proteínas: produção de tofu", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 panela leiteira · 1 chapa de aquecimento · 1 peneira grande · 1 pano Perfex · 1 escumadeira ou colher grande de cabo longo · 1 béquer pequeno (para diluir o coagulante) · 1 peso (frasco de vidro cheio de água)", "comum": "200 g de grãos de soja amarela por grupo · água filtrada (cerca de 1 L por grupo, de preferência morna) · cloreto de magnésio grau alimentício · liquidificador (pode ser compartilhado entre os grupos). Cada grupo traz o próprio recipiente plástico furado para a prensagem.", "info": "PREPARO PRÉVIO: a soja precisa ficar de molho em água por 8 a 12 h — deixar de molho na véspera. Coagulação entre 75 e 80 °C, depois de 10 min de fervura. Prensagem de 20 a 30 min.", "prep": "RESÍDUOS: o okara (resíduo sólido retido no pano) é resíduo orgânico; o soro pode ser descartado na pia.", "fonte": "EXPERIMENTO 3 – Coagulação de proteínas (produção de tofu)", "prazo": "2026-08-26", "dow": "ter"}, {"id": "QNC-2026-09-01-m", "tipo": "montagem", "disc": "QNC", "data": "2026-08-31", "semana": "6ª", "titulo": "Montagem para a aula de 01/09 — Coagulação de proteínas: produção de tofu", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "1 panela leiteira · 1 chapa de aquecimento · 1 peneira grande · 1 pano Perfex · 1 escumadeira ou colher grande de cabo longo · 1 béquer pequeno (para diluir o coagulante) · 1 peso (frasco de vidro cheio de água)", "comum": "200 g de grãos de soja amarela por grupo · água filtrada (cerca de 1 L por grupo, de preferência morna) · cloreto de magnésio grau alimentício · liquidificador (pode ser compartilhado entre os grupos). Cada grupo traz o próprio recipiente plástico furado para a prensagem.", "info": "PREPARO PRÉVIO: a soja precisa ficar de molho em água por 8 a 12 h — deixar de molho na véspera. Coagulação entre 75 e 80 °C, depois de 10 min de fervura. Prensagem de 20 a 30 min.", "prep": "RESÍDUOS: o okara (resíduo sólido retido no pano) é resíduo orgânico; o soro pode ser descartado na pia.", "fonte": "EXPERIMENTO 3 – Coagulação de proteínas (produção de tofu)", "prazo": null, "dow": "seg"}, {"id": "QNC-2026-09-01-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-09-01", "semana": "6ª", "titulo": "Desmontagem e limpeza — Coagulação de proteínas: produção de tofu", "local": "Cozinha / Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "RESÍDUOS: o okara (resíduo sólido retido no pano) é resíduo orgânico; o soro pode ser descartado na pia.", "fonte": "EXPERIMENTO 3 – Coagulação de proteínas (produção de tofu)", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-09-08", "tipo": "aula", "disc": "QNC", "data": "2026-09-08", "semana": "7ª", "titulo": "Prática 4 — Criação das receitas de sorvete (produção posterior na Amoratto)", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks", "info": "Aula de criação, sem bancada. Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-09-15", "tipo": "aula", "disc": "QNC", "data": "2026-09-15", "semana": "9ª", "titulo": "Prática 5 — Gelificação iônica: esferificação (caviar de frutas)", "local": "Laboratório de trás", "monitor": "sim", "materiais": "1 béquer com mais de 250 mL (solução de alginato) · 2 panelas leiteiras (uma para o banho de cálcio, outra para o banho de lavagem) · pipetas de Pasteur · 1 peneira pequena · 1 colher ou bastão de vidro · 1 mixer de mão", "comum": "Bancada central / mesa do professor: balança(s) · 2 garrafas de água mineral · xarope Monin de maçã verde · suco de uva puro · suco de manga puro · copinhos descartáveis ou colheres limpas para a degustação. Por grupo: 2 g de alginato de sódio e 5 g de lactato ou cloreto de cálcio (grau culinário).", "info": "HIGIENE RIGOROSA: os alunos degustam o produto final — todas as vidrarias, equipamentos, bancadas e utensílios lavados com água e detergente neutro antes da montagem, com atenção especial aos béqueres usados em outros experimentos. A solução de alginato precisa descansar de 15 a 30 min depois de batida, para as bolhas de ar subirem.", "prep": "ORGANIZAÇÃO DO ESPAÇO: retirar das bancadas os materiais do experimento dos 2ºs anos (apenas do laboratório de trás). O experimento dos 2ºs anos precisa ser remontado na quarta-feira, porque eles repetem os experimentos da semana na quinta. Descarte: banhos de cálcio e de lavagem não são tóxicos, vão direto na pia; restos de esferas no lixo orgânico.", "fonte": "EXPERIMENTO 4 – Gelificação iônica · Preparação do laboratório – Gelificação", "prazo": "2026-09-09", "dow": "ter"}, {"id": "QNC-2026-09-15-m", "tipo": "montagem", "disc": "QNC", "data": "2026-09-14", "semana": "9ª", "titulo": "Montagem para a aula de 15/09 — Gelificação iônica: esferificação (caviar de frutas)", "local": "Laboratório de trás", "monitor": "sim", "materiais": "1 béquer com mais de 250 mL (solução de alginato) · 2 panelas leiteiras (uma para o banho de cálcio, outra para o banho de lavagem) · pipetas de Pasteur · 1 peneira pequena · 1 colher ou bastão de vidro · 1 mixer de mão", "comum": "Bancada central / mesa do professor: balança(s) · 2 garrafas de água mineral · xarope Monin de maçã verde · suco de uva puro · suco de manga puro · copinhos descartáveis ou colheres limpas para a degustação. Por grupo: 2 g de alginato de sódio e 5 g de lactato ou cloreto de cálcio (grau culinário).", "info": "HIGIENE RIGOROSA: os alunos degustam o produto final — todas as vidrarias, equipamentos, bancadas e utensílios lavados com água e detergente neutro antes da montagem, com atenção especial aos béqueres usados em outros experimentos. A solução de alginato precisa descansar de 15 a 30 min depois de batida, para as bolhas de ar subirem.", "prep": "ORGANIZAÇÃO DO ESPAÇO: retirar das bancadas os materiais do experimento dos 2ºs anos (apenas do laboratório de trás). O experimento dos 2ºs anos precisa ser remontado na quarta-feira, porque eles repetem os experimentos da semana na quinta. Descarte: banhos de cálcio e de lavagem não são tóxicos, vão direto na pia; restos de esferas no lixo orgânico.", "fonte": "EXPERIMENTO 4 – Gelificação iônica · Preparação do laboratório – Gelificação", "prazo": null, "dow": "seg"}, {"id": "QNC-2026-09-15-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-09-15", "semana": "9ª", "titulo": "Desmontagem e limpeza — Gelificação iônica: esferificação (caviar de frutas)", "local": "Laboratório de trás", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "ORGANIZAÇÃO DO ESPAÇO: retirar das bancadas os materiais do experimento dos 2ºs anos (apenas do laboratório de trás). O experimento dos 2ºs anos precisa ser remontado na quarta-feira, porque eles repetem os experimentos da semana na quinta. Descarte: banhos de cálcio e de lavagem não são tóxicos, vão direto na pia; restos de esferas no lixo orgânico.", "fonte": "EXPERIMENTO 4 – Gelificação iônica · Preparação do laboratório – Gelificação", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-09-22", "tipo": "aula", "disc": "QNC", "data": "2026-09-22", "semana": "10ª", "titulo": "Saída de campo — indústria de alimentos Amoratto", "local": "Externo", "monitor": "nao", "materiais": "", "comum": "", "info": "Data ainda a confirmar com a empresa.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-09-29", "tipo": "aula", "disc": "QNC", "data": "2026-09-29", "semana": "11ª", "titulo": "Apresentação do projeto final e da receita industrial", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks; embalagens de alimentos trazidas pelos alunos", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-10-06", "tipo": "aula", "disc": "QNC", "data": "2026-10-06", "semana": "12ª", "titulo": "Teste da receita escolhida: produção do produto na cozinha", "local": "Cozinha", "monitor": "sim", "materiais": "A definir com cada grupo — cada equipe traz os próprios ingredientes", "comum": "", "info": "A lista de utensílios só fecha depois que os grupos entregarem as receitas, na aula de 29/09.", "prep": "Combinar de enviar a lista final ao Christian logo após a aula de 29/09 — são só 5 dias úteis entre uma aula e outra.", "fonte": "", "prazo": "2026-09-30", "dow": "ter"}, {"id": "QNC-2026-10-06-m", "tipo": "montagem", "disc": "QNC", "data": "2026-10-05", "semana": "12ª", "titulo": "Montagem para a aula de 06/10 — Teste da receita escolhida: produção do produto na cozinha", "local": "Cozinha", "monitor": "sim", "materiais": "A definir com cada grupo — cada equipe traz os próprios ingredientes", "comum": "", "info": "A lista de utensílios só fecha depois que os grupos entregarem as receitas, na aula de 29/09.", "prep": "Combinar de enviar a lista final ao Christian logo após a aula de 29/09 — são só 5 dias úteis entre uma aula e outra.", "fonte": "", "prazo": null, "dow": "seg"}, {"id": "QNC-2026-10-06-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-10-06", "semana": "12ª", "titulo": "Desmontagem e limpeza — Teste da receita escolhida: produção do produto na cozinha", "local": "Cozinha", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "Combinar de enviar a lista final ao Christian logo após a aula de 29/09 — são só 5 dias úteis entre uma aula e outra.", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-10-13", "tipo": "aula", "disc": "QNC", "data": "2026-10-13", "semana": "13ª", "titulo": "FERIADO — antecipação do Dia do Professor", "local": "—", "monitor": "nao", "materiais": "", "comum": "", "info": "Sem aula.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-10-20", "tipo": "aula", "disc": "QNC", "data": "2026-10-20", "semana": "14ª", "titulo": "Tabela nutricional e calorias; projeto Lupa; FatSecret e Canva", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-10-27", "tipo": "aula", "disc": "QNC", "data": "2026-10-27", "semana": "15ª", "titulo": "Criação da embalagem, design do rótulo e precificação", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-11-03", "tipo": "aula", "disc": "QNC", "data": "2026-11-03", "semana": "16ª", "titulo": "Finalização do projeto e preparação da socialização", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-11-07", "tipo": "aula", "disc": "QNC", "data": "2026-11-07", "semana": "—", "titulo": "SOCIALIZAÇÃO — degustação dos produtos alimentícios", "local": "Colégio", "monitor": "sim", "materiais": "Mesas, toalhas, pratos e copos descartáveis, guardanapos, gelo e isopor, extensões e tomadas, lixeiras", "comum": "", "info": "Evento de sábado. Como há degustação, valem as mesmas exigências de higiene das práticas na cozinha.", "prep": "A montagem das bancadas precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": "2026-11-03", "dow": "sáb"}, {"id": "QNC-2026-11-07-m", "tipo": "montagem", "disc": "QNC", "data": "2026-11-06", "semana": "—", "titulo": "Montagem para a aula de 07/11 — degustação dos produtos alimentícios", "local": "Colégio", "monitor": "sim", "materiais": "Mesas, toalhas, pratos e copos descartáveis, guardanapos, gelo e isopor, extensões e tomadas, lixeiras", "comum": "", "info": "Evento de sábado. Como há degustação, valem as mesmas exigências de higiene das práticas na cozinha.", "prep": "A montagem das bancadas precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": null, "dow": "sex"}, {"id": "QNC-2026-11-07-d", "tipo": "desmontagem", "disc": "QNC", "data": "2026-11-07", "semana": "—", "titulo": "Desmontagem e limpeza — degustação dos produtos alimentícios", "local": "Colégio", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "A montagem das bancadas precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": null, "dow": "sáb"}, {"id": "QNC-2026-11-10", "tipo": "aula", "disc": "QNC", "data": "2026-11-10", "semana": "17ª", "titulo": "Devolutivas, autoavaliação e fechamento das notas", "local": "Sala", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QNC-2026-11-17", "tipo": "aula", "disc": "QNC", "data": "2026-11-17", "semana": "18ª", "titulo": "Reavaliação semestral das eletivas", "local": "Sala", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "ter"}, {"id": "QADL-2026-07-30", "tipo": "aula", "disc": "QADL", "data": "2026-07-30", "semana": "1ª", "titulo": "Apresentação da disciplina, regras de laboratório e início dos estudos de caso", "local": "Laboratório", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-08-06", "tipo": "aula", "disc": "QADL", "data": "2026-08-06", "semana": "2ª", "titulo": "Estudo de caso: hipóteses, evidências químicas e planejamento dos ensaios", "local": "Laboratório", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-08-13", "tipo": "aula", "disc": "QADL", "data": "2026-08-13", "semana": "3ª", "titulo": "Estudo de caso: execução dos ensaios no laboratório", "local": "Laboratório", "monitor": "sim", "materiais": "Varia conforme o ensaio planejado por cada grupo", "comum": "", "info": "EPI: avental, óculos e luvas. A lista sai do planejamento feito pelos grupos na aula anterior.", "prep": "", "fonte": "", "prazo": "2026-08-07", "dow": "qui"}, {"id": "QADL-2026-08-13-m", "tipo": "montagem", "disc": "QADL", "data": "2026-08-12", "semana": "3ª", "titulo": "Montagem para a aula de 13/08 — Estudo de caso: execução dos ensaios no laboratório", "local": "Laboratório", "monitor": "sim", "materiais": "Varia conforme o ensaio planejado por cada grupo", "comum": "", "info": "EPI: avental, óculos e luvas. A lista sai do planejamento feito pelos grupos na aula anterior.", "prep": "", "fonte": "", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-08-13-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-08-13", "semana": "3ª", "titulo": "Desmontagem e limpeza — Estudo de caso: execução dos ensaios no laboratório", "local": "Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-08-20", "tipo": "aula", "disc": "QADL", "data": "2026-08-20", "semana": "4ª", "titulo": "Apresentação dos estudos de caso (cada grupo em sua sala)", "local": "Salas de aula", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-08-27", "tipo": "aula", "disc": "QADL", "data": "2026-08-27", "semana": "5ª", "titulo": "Saída de campo — ETA CASAN (tratamento de água)", "local": "Externo", "monitor": "nao", "materiais": "", "comum": "", "info": "Data em agendamento; pode ser permutada com a visita ao Quimidex. Alunos podem usar o celular para registrar imagens do relatório.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-09-03", "tipo": "aula", "disc": "QADL", "data": "2026-09-03", "semana": "6ª", "titulo": "Saída de campo — Quimidex / UFSC", "local": "Externo", "monitor": "nao", "materiais": "", "comum": "", "info": "Data em agendamento; pode ser permutada com a visita à CASAN.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-09-10", "tipo": "aula", "disc": "QADL", "data": "2026-09-10", "semana": "7ª", "titulo": "Palestra de química forense — Polícia Científica / IGP", "local": "Auditório", "monitor": "nao", "materiais": "", "comum": "Projetor e som", "info": "Agendado, aguardando confirmação do convidado.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-09-17", "tipo": "aula", "disc": "QADL", "data": "2026-09-17", "semana": "9ª", "titulo": "Apresentação do projeto final; fragrâncias I: notas, acordes e pirâmide olfativa", "local": "Sala", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-09-24", "tipo": "aula", "disc": "QADL", "data": "2026-09-24", "semana": "10ª", "titulo": "Fragrâncias II: óleos essenciais, extração, ésteres, fixadores e solventes", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "Só se houver demonstração de extração", "comum": "", "info": "CONFIRMAR até o prazo se haverá demonstração prática. Se a aula for só teórica, o Christian não precisa ser acionado.", "prep": "", "fonte": "", "prazo": "2026-09-18", "dow": "qui"}, {"id": "QADL-2026-09-24-m", "tipo": "montagem", "disc": "QADL", "data": "2026-09-23", "semana": "10ª", "titulo": "Montagem para a aula de 24/09 — Fragrâncias II: óleos essenciais, extração, ésteres, fixadores e solventes", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "Só se houver demonstração de extração", "comum": "", "info": "CONFIRMAR até o prazo se haverá demonstração prática. Se a aula for só teórica, o Christian não precisa ser acionado.", "prep": "", "fonte": "", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-09-24-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-09-24", "semana": "10ª", "titulo": "Desmontagem e limpeza — Fragrâncias II: óleos essenciais, extração, ésteres, fixadores e solventes", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-10-01", "tipo": "aula", "disc": "QADL", "data": "2026-10-01", "semana": "11ª", "titulo": "Prática — Saponificação (saboaria artesanal)", "local": "Laboratório", "monitor": "sim", "materiais": "2 béqueres de 400 ou 600 mL (um deles totalmente seco, para a soda) · 1 béquer de 250 ou 400 mL (gorduras) · 1 béquer pequeno de 50 mL seco (essência) · 1 panela leiteira · 1 colher · 1 bastão de vidro · 1 bacia plástica resistente ao calor · 1 chapa de aquecimento · 1 mixer de mão · 1 termômetro tipo espeto até 100 °C · 1 espátula de silicone ou colher de pau", "comum": "POR LABORATÓRIO (8 bancadas): água destilada 1624 g · NaOH em pérolas 728 g · banha 1896 g · óleo de babaçu sólido 1088 g · óleo de girassol 816 g · óleo de rícino 816 g · manteiga de karité 544 g · ácido esteárico 272 g · essência 232 g. — CAPELA: potes de NaOH, 3 pissetas cheias de água destilada e 1 balança. BANCADA CENTRAL: 1 balança, gorduras sólidas (banha, karité, ácido esteárico, babaçu) com uma espátula exclusiva por pote, e os óleos líquidos nas garrafas originais.", "info": "EPI OBRIGATÓRIO: 20 óculos de proteção por laboratório e luvas de nitrila. O preparo da lixívia é altamente exotérmico e libera vapores irritantes — só na capela. Por grupo: 203 g de água + 91 g de NaOH; blend de 237 g de banha, 68 g de karité, 34 g de ácido esteárico, 136 g de babaçu, 102 g de girassol e 102 g de rícino; 29 g de essência pesados pelos próprios alunos. As duas fases precisam se encontrar na mesma faixa de temperatura.", "prep": "ANTES DA MONTAGEM: remover todos os materiais, vidrarias e resíduos de práticas anteriores — as bancadas e a mesa central devem conter apenas os itens da saponificação. Balanças: são 4 no total, 2 por laboratório, uma fixa na capela e outra na bancada central. Os moldes de papelão forrados com papel manteiga são montados pelo professor na quinta de manhã. Papel toalha para limpar vidrarias engorduradas antes da pia e baldinhos para o descarte dos papéis com gordura. DEPOIS: descanso de 24 a 48 h antes de desenformar e cura de 4 a 6 semanas — reservar prateleira identificada.", "fonte": "Reação de saponificação · Preparação do laboratório – Saponificação", "prazo": "2026-09-25", "dow": "qui"}, {"id": "QADL-2026-10-01-m", "tipo": "montagem", "disc": "QADL", "data": "2026-09-30", "semana": "11ª", "titulo": "Montagem para a aula de 01/10 — Saponificação (saboaria artesanal)", "local": "Laboratório", "monitor": "sim", "materiais": "2 béqueres de 400 ou 600 mL (um deles totalmente seco, para a soda) · 1 béquer de 250 ou 400 mL (gorduras) · 1 béquer pequeno de 50 mL seco (essência) · 1 panela leiteira · 1 colher · 1 bastão de vidro · 1 bacia plástica resistente ao calor · 1 chapa de aquecimento · 1 mixer de mão · 1 termômetro tipo espeto até 100 °C · 1 espátula de silicone ou colher de pau", "comum": "POR LABORATÓRIO (8 bancadas): água destilada 1624 g · NaOH em pérolas 728 g · banha 1896 g · óleo de babaçu sólido 1088 g · óleo de girassol 816 g · óleo de rícino 816 g · manteiga de karité 544 g · ácido esteárico 272 g · essência 232 g. — CAPELA: potes de NaOH, 3 pissetas cheias de água destilada e 1 balança. BANCADA CENTRAL: 1 balança, gorduras sólidas (banha, karité, ácido esteárico, babaçu) com uma espátula exclusiva por pote, e os óleos líquidos nas garrafas originais.", "info": "EPI OBRIGATÓRIO: 20 óculos de proteção por laboratório e luvas de nitrila. O preparo da lixívia é altamente exotérmico e libera vapores irritantes — só na capela. Por grupo: 203 g de água + 91 g de NaOH; blend de 237 g de banha, 68 g de karité, 34 g de ácido esteárico, 136 g de babaçu, 102 g de girassol e 102 g de rícino; 29 g de essência pesados pelos próprios alunos. As duas fases precisam se encontrar na mesma faixa de temperatura.", "prep": "ANTES DA MONTAGEM: remover todos os materiais, vidrarias e resíduos de práticas anteriores — as bancadas e a mesa central devem conter apenas os itens da saponificação. Balanças: são 4 no total, 2 por laboratório, uma fixa na capela e outra na bancada central. Os moldes de papelão forrados com papel manteiga são montados pelo professor na quinta de manhã. Papel toalha para limpar vidrarias engorduradas antes da pia e baldinhos para o descarte dos papéis com gordura. DEPOIS: descanso de 24 a 48 h antes de desenformar e cura de 4 a 6 semanas — reservar prateleira identificada.", "fonte": "Reação de saponificação · Preparação do laboratório – Saponificação", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-10-01-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-10-01", "semana": "11ª", "titulo": "Desmontagem e limpeza — Saponificação (saboaria artesanal)", "local": "Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "ANTES DA MONTAGEM: remover todos os materiais, vidrarias e resíduos de práticas anteriores — as bancadas e a mesa central devem conter apenas os itens da saponificação. Balanças: são 4 no total, 2 por laboratório, uma fixa na capela e outra na bancada central. Os moldes de papelão forrados com papel manteiga são montados pelo professor na quinta de manhã. Papel toalha para limpar vidrarias engorduradas antes da pia e baldinhos para o descarte dos papéis com gordura. DEPOIS: descanso de 24 a 48 h antes de desenformar e cura de 4 a 6 semanas — reservar prateleira identificada.", "fonte": "Reação de saponificação · Preparação do laboratório – Saponificação", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-10-08", "tipo": "aula", "disc": "QADL", "data": "2026-10-08", "semana": "12ª", "titulo": "Formulação do perfume e do creme: cálculo das concentrações", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "Fichas de fórmula e calculadora", "comum": "Dossiê de matérias-primas e as amostras para avaliação olfativa das 5 bases", "info": "Aula de planejamento: cada aluno monta a fórmula do creme (lote de 100 g) e da fragrância (lote de 8,00 g) antes de ir para a bancada. Acionar o Christian só se houver pesagem-teste.", "prep": "Documentos: “Guia Técnico para formulação de creme hidratante”, “Catálogo de Composição de Fragrâncias” e “Plano de Desenvolvimento e Hipótese Cosmética”.", "fonte": "", "prazo": "2026-10-02", "dow": "qui"}, {"id": "QADL-2026-10-08-m", "tipo": "montagem", "disc": "QADL", "data": "2026-10-07", "semana": "12ª", "titulo": "Montagem para a aula de 08/10 — Formulação do perfume e do creme: cálculo das concentrações", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "Fichas de fórmula e calculadora", "comum": "Dossiê de matérias-primas e as amostras para avaliação olfativa das 5 bases", "info": "Aula de planejamento: cada aluno monta a fórmula do creme (lote de 100 g) e da fragrância (lote de 8,00 g) antes de ir para a bancada. Acionar o Christian só se houver pesagem-teste.", "prep": "Documentos: “Guia Técnico para formulação de creme hidratante”, “Catálogo de Composição de Fragrâncias” e “Plano de Desenvolvimento e Hipótese Cosmética”.", "fonte": "", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-10-08-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-10-08", "semana": "12ª", "titulo": "Desmontagem e limpeza — Formulação do perfume e do creme: cálculo das concentrações", "local": "Sala / Laboratório", "monitor": "talvez", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "Documentos: “Guia Técnico para formulação de creme hidratante”, “Catálogo de Composição de Fragrâncias” e “Plano de Desenvolvimento e Hipótese Cosmética”.", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-10-15", "tipo": "aula", "disc": "QADL", "data": "2026-10-15", "semana": "13ª", "titulo": "Produção do perfume: composição da fragrância (lote de 8,00 g)", "local": "Laboratório", "monitor": "sim", "materiais": "1 frasco de vidro de 10 mL por aluno · pipetas limpas (uma por material, para não contaminar) · etiquetas · a ficha de fórmula preenchida", "comum": "Balanças de precisão (0,01 g) nas estações de pesagem · os materiais de perfumaria já pré-diluídos e etiquetados, organizados por família olfativa · as 5 bases", "info": "Todo o processo é por massa, não por volume. Sequência: tarar o frasco, pesar a base (40–60% da fórmula) e depois cada modificador, um de cada vez, até fechar 8,00 g. Materiais a 1% e 0,1% (heptoato de alila, calone, helional, benzaldeído, agarwood, civet) são de altíssimo impacto — adicionar em incrementos de cerca de 0,05 g.", "prep": "Prever fila nas balanças: a pesagem é o gargalo da aula. Vale distribuir as balanças em estações, como na saponificação.", "fonte": "Catálogo de Composição de Fragrâncias", "prazo": "2026-10-07", "dow": "qui"}, {"id": "QADL-2026-10-15-m", "tipo": "montagem", "disc": "QADL", "data": "2026-10-14", "semana": "13ª", "titulo": "Montagem para a aula de 15/10 — Produção do perfume: composição da fragrância (lote de 8,00 g)", "local": "Laboratório", "monitor": "sim", "materiais": "1 frasco de vidro de 10 mL por aluno · pipetas limpas (uma por material, para não contaminar) · etiquetas · a ficha de fórmula preenchida", "comum": "Balanças de precisão (0,01 g) nas estações de pesagem · os materiais de perfumaria já pré-diluídos e etiquetados, organizados por família olfativa · as 5 bases", "info": "Todo o processo é por massa, não por volume. Sequência: tarar o frasco, pesar a base (40–60% da fórmula) e depois cada modificador, um de cada vez, até fechar 8,00 g. Materiais a 1% e 0,1% (heptoato de alila, calone, helional, benzaldeído, agarwood, civet) são de altíssimo impacto — adicionar em incrementos de cerca de 0,05 g.", "prep": "Prever fila nas balanças: a pesagem é o gargalo da aula. Vale distribuir as balanças em estações, como na saponificação.", "fonte": "Catálogo de Composição de Fragrâncias", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-10-15-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-10-15", "semana": "13ª", "titulo": "Desmontagem e limpeza — Produção do perfume: composição da fragrância (lote de 8,00 g)", "local": "Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "Prever fila nas balanças: a pesagem é o gargalo da aula. Vale distribuir as balanças em estações, como na saponificação.", "fonte": "Catálogo de Composição de Fragrâncias", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-10-22", "tipo": "aula", "disc": "QADL", "data": "2026-10-22", "semana": "14ª", "titulo": "Produção do creme (emulsão O/A) — parte 1: pesagem, aquecimento e emulsificação", "local": "Laboratório", "monitor": "sim", "materiais": "2 béqueres (fase A e fase B) · chapa de aquecimento com agitação magnética e barra magnética · 2 termômetros · 1 mixer de mão · espátulas · pote de envase identificado", "comum": "FASE A: água deionizada, glicerina, propilenoglicol. FASE B: óleo de girassol, óleo de coco babaçu, óleo de rícino, manteiga de karité, ácido esteárico, álcool cetoestearílico, Olivem 1000, monoestearato de glicerila, BTMS-25. FASE C: sorbato de potássio + benzoato de sódio. Balança analítica nas estações de pesagem.", "info": "Lote de 100 g por aluno, cada um com a sua própria fórmula — as quantidades variam de grupo para grupo. A água precisa ser DEIONIZADA: cátions da água comum quebram a emulsão. As duas fases sobem juntas até 75 °C e são unidas ainda quentes, sob agitação de alta rotação por 3 a 5 min. Os conservantes (fase C) só entram abaixo de 40 °C, porque são termossensíveis.", "prep": "São necessários dois pontos de aquecimento simultâneos por bancada. O creme precisa repousar 24 h em temperatura ambiente antes da avaliação de qualidade — reservar espaço identificado.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": "2026-10-16", "dow": "qui"}, {"id": "QADL-2026-10-22-m", "tipo": "montagem", "disc": "QADL", "data": "2026-10-21", "semana": "14ª", "titulo": "Montagem para a aula de 22/10 — parte 1: pesagem, aquecimento e emulsificação", "local": "Laboratório", "monitor": "sim", "materiais": "2 béqueres (fase A e fase B) · chapa de aquecimento com agitação magnética e barra magnética · 2 termômetros · 1 mixer de mão · espátulas · pote de envase identificado", "comum": "FASE A: água deionizada, glicerina, propilenoglicol. FASE B: óleo de girassol, óleo de coco babaçu, óleo de rícino, manteiga de karité, ácido esteárico, álcool cetoestearílico, Olivem 1000, monoestearato de glicerila, BTMS-25. FASE C: sorbato de potássio + benzoato de sódio. Balança analítica nas estações de pesagem.", "info": "Lote de 100 g por aluno, cada um com a sua própria fórmula — as quantidades variam de grupo para grupo. A água precisa ser DEIONIZADA: cátions da água comum quebram a emulsão. As duas fases sobem juntas até 75 °C e são unidas ainda quentes, sob agitação de alta rotação por 3 a 5 min. Os conservantes (fase C) só entram abaixo de 40 °C, porque são termossensíveis.", "prep": "São necessários dois pontos de aquecimento simultâneos por bancada. O creme precisa repousar 24 h em temperatura ambiente antes da avaliação de qualidade — reservar espaço identificado.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-10-22-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-10-22", "semana": "14ª", "titulo": "Desmontagem e limpeza — parte 1: pesagem, aquecimento e emulsificação", "local": "Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "São necessários dois pontos de aquecimento simultâneos por bancada. O creme precisa repousar 24 h em temperatura ambiente antes da avaliação de qualidade — reservar espaço identificado.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-10-29", "tipo": "aula", "disc": "QADL", "data": "2026-10-29", "semana": "15ª", "titulo": "Produção do creme — parte 2: controle de qualidade, ajuste e envase", "local": "Laboratório", "monitor": "sim", "materiais": "Fitas de pH ou pHmetro · espátulas · potes de envase · etiquetas", "comum": "Ácido cítrico para ajuste de pH · fragrâncias · conservantes de reposição", "info": "Avaliação após 24 h de repouso: aspecto (brilhante e homogêneo ou com quebra e separação de fases), viscosidade e sensorial. O pH precisa ficar abaixo de 5,5 — é a condição para o sorbato e o benzoato funcionarem.", "prep": "CONFERIR COM O PROFESSOR: o guia técnico descreve a adição dos conservantes na mesma sessão da emulsificação (abaixo de 40 °C), enquanto o planejamento separa isso para esta aula. Vale alinhar antes de montar.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": "2026-10-23", "dow": "qui"}, {"id": "QADL-2026-10-29-m", "tipo": "montagem", "disc": "QADL", "data": "2026-10-28", "semana": "15ª", "titulo": "Montagem para a aula de 29/10 — parte 2: controle de qualidade, ajuste e envase", "local": "Laboratório", "monitor": "sim", "materiais": "Fitas de pH ou pHmetro · espátulas · potes de envase · etiquetas", "comum": "Ácido cítrico para ajuste de pH · fragrâncias · conservantes de reposição", "info": "Avaliação após 24 h de repouso: aspecto (brilhante e homogêneo ou com quebra e separação de fases), viscosidade e sensorial. O pH precisa ficar abaixo de 5,5 — é a condição para o sorbato e o benzoato funcionarem.", "prep": "CONFERIR COM O PROFESSOR: o guia técnico descreve a adição dos conservantes na mesma sessão da emulsificação (abaixo de 40 °C), enquanto o planejamento separa isso para esta aula. Vale alinhar antes de montar.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": null, "dow": "qua"}, {"id": "QADL-2026-10-29-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-10-29", "semana": "15ª", "titulo": "Desmontagem e limpeza — parte 2: controle de qualidade, ajuste e envase", "local": "Laboratório", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "CONFERIR COM O PROFESSOR: o guia técnico descreve a adição dos conservantes na mesma sessão da emulsificação (abaixo de 40 °C), enquanto o planejamento separa isso para esta aula. Vale alinhar antes de montar.", "fonte": "Guia Técnico para formulação de creme hidratante", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-11-05", "tipo": "aula", "disc": "QADL", "data": "2026-11-05", "semana": "16ª", "titulo": "Finalização: rotulagem, embalagem, precificação e apresentação", "local": "Laboratório de mídias", "monitor": "nao", "materiais": "", "comum": "Notebooks; material de rotulagem", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-11-07", "tipo": "aula", "disc": "QADL", "data": "2026-11-07", "semana": "—", "titulo": "SOCIALIZAÇÃO — apresentação dos produtos cosméticos", "local": "Colégio", "monitor": "sim", "materiais": "Mesas, toalhas, suportes e expositores, espelhos, fitas de papel e algodão para teste olfativo, lixeiras", "comum": "", "info": "Evento de sábado. Os sabões da saponificação (01/10) completam a cura por volta de 12/11 a 26/11 — confirmar se estarão prontos para a exposição.", "prep": "A montagem das bancadas de exposição precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": "2026-11-03", "dow": "sáb"}, {"id": "QADL-2026-11-07-m", "tipo": "montagem", "disc": "QADL", "data": "2026-11-06", "semana": "—", "titulo": "Montagem para a aula de 07/11 — apresentação dos produtos cosméticos", "local": "Colégio", "monitor": "sim", "materiais": "Mesas, toalhas, suportes e expositores, espelhos, fitas de papel e algodão para teste olfativo, lixeiras", "comum": "", "info": "Evento de sábado. Os sabões da saponificação (01/10) completam a cura por volta de 12/11 a 26/11 — confirmar se estarão prontos para a exposição.", "prep": "A montagem das bancadas de exposição precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": null, "dow": "sex"}, {"id": "QADL-2026-11-07-d", "tipo": "desmontagem", "disc": "QADL", "data": "2026-11-07", "semana": "—", "titulo": "Desmontagem e limpeza — apresentação dos produtos cosméticos", "local": "Colégio", "monitor": "sim", "materiais": "", "comum": "", "info": "Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.", "prep": "A montagem das bancadas de exposição precisa estar concluída antes da abertura ao público.", "fonte": "", "prazo": null, "dow": "sáb"}, {"id": "QADL-2026-11-12", "tipo": "aula", "disc": "QADL", "data": "2026-11-12", "semana": "17ª", "titulo": "Reavaliação semestral das eletivas", "local": "Sala", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}, {"id": "QADL-2026-11-19", "tipo": "aula", "disc": "QADL", "data": "2026-11-19", "semana": "18ª", "titulo": "Devolutivas, autoavaliação e finalização da disciplina", "local": "Sala", "monitor": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "prazo": null, "dow": "qui"}], "feriados": {"2026-09-07": "Independência", "2026-10-12": "N. Sra. Aparecida", "2026-10-13": "Antecipação do Dia do Professor (escola)", "2026-11-02": "Finados", "2026-11-20": "Consciência Negra"}, "avaliacoes": [["QNC", "2026-09-29", "PP — Relatórios das práticas e trabalho de macronutrientes"], ["QNC", "2026-11-07", "PF — Produto alimentício, embalagem e tabela nutricional"], ["QADL", "2026-08-20", "PP — Relatórios das práticas e estudos de caso"], ["QADL", "2026-11-07", "PF — Perfume, creme e sabão (protótipo industrial)"]], "gerado": "2026-08-20"};
-const MES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-const MESL=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-const NOME={QNC:"Química na Cozinha",QADL:"Química além dos Livros"};
-const pd=s=>{const[y,m,x]=s.split("-").map(Number);return new Date(y,m-1,x)};
+/* =================== CONFIGURAÇÃO =================== */
+const CFG = {"eventosCsv": "https://docs.google.com/spreadsheets/d/1pAu7ZaNoFslZwBwg7xsQ0Yt5kZ-CD9nVhYKJA0mULSQ/gviz/tq?tqx=out:csv", "eventosCsvAlt": "https://docs.google.com/spreadsheets/d/e/1pAu7ZaNoFslZwBwg7xsQ0Yt5kZ-CD9nVhYKJA0mULSQ/pub?output=csv", "planilhaUrl": "https://docs.google.com/spreadsheets/d/1pAu7ZaNoFslZwBwg7xsQ0Yt5kZ-CD9nVhYKJA0mULSQ/edit", "formUrl": "", "formCampoEvento": "", "comentariosCsv": ""};
+const BASE = {"aulas": [{"data": "2026-07-28", "disc": "QNC", "semana": "1ª", "titulo": "Apresentação da disciplina e dos espaços; organização dos trabalhos de macronutrientes", "local": "Sala / Laboratório", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-04", "disc": "QNC", "semana": "2ª", "titulo": "Orientação do trabalho de macronutrientes e planejamento da parte prática", "local": "Sala / Laboratório", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-11", "disc": "QNC", "semana": "3ª", "titulo": "Apresentação do trabalho sobre macronutrientes (demonstração de cada grupo)", "local": "Sala", "christian": "nao", "materiais": "Cada grupo traz o seu material em bandejas. Fibras: 2 copos transparentes, água, aveia em flocos ou chia. Proteínas: copo, leite integral, vinagre branco ou limão. Sais minerais e vitaminas: maçã, faca, suco de limão. Carboidratos: batata, pão, queijo e maçã, solução de iodo (Povidine ou tintura de iodo) e conta-gotas. Lipídios: pote de vidro com tampa, água, óleo de cozinha, mostarda ou gema de ovo.", "comum": "", "info": "Cada grupo faz uma demonstração química ao vivo ou gravada e explica a teoria enquanto o resultado aparece. Luvas e jaleco para reforçar a postura laboratorial.", "prep": "", "fonte": "Experimento.pdf", "arquivos": [{"nome": "Demonstrações dos grupos · Macronutrientes", "url": ""}]}, {"data": "2026-08-18", "disc": "QNC", "semana": "4ª", "titulo": "Prática 1 — Fermentação biológica: produção de tepache", "local": "Cozinha / Laboratório", "christian": "sim", "materiais": "1 abacaxi maduro · 1 pote de vidro lavado · 1 colher · 1 faca grande e 1 faca pequena · 1 bacia branca para cortar o abacaxi", "comum": "Mesa do professor: açúcar refinado · temperos (gengibre, canela, cravo) · 1 rolo de filme PVC · 1 litro de água filtrada por grupo", "info": "Higienização rigorosa de tudo (a bacia lavada com sabão): os alunos vão consumir o produto da fermentação. A bebida fermenta de 48 a 72 h em temperatura ambiente (20–30 °C), em local escuro e arejado — é preciso reservar esse espaço.", "prep": "ENVASE (quinta ou sexta seguinte): depois da fermentação, coar o tepache e transferir para os frascos PET já separados no laboratório. O professor Henrique repassa pessoalmente as instruções do envase à equipe técnica.", "fonte": "Roteiro experimento 1 · Preparação do laboratório (arquivo “Confeitando um bolo”)", "arquivos": [{"nome": "Roteiro · Tepache", "url": ""}, {"nome": "Preparação do laboratório · Tepache", "url": ""}, {"nome": "Questionário · Tepache", "url": ""}]}, {"data": "2026-08-25", "disc": "QNC", "semana": "5ª", "titulo": "Prática 2 — Coloides na cozinha: espuma (chantilly) e confeitagem do bolo", "local": "Cozinha / Laboratório", "christian": "sim", "materiais": "1 tigela (bowl) grande · 1 batedor de arame (fouet) · 1 faca grande · 1 faca pequena · 1 faca lisa de confeitar · espátulas de confeitar · 1 bandeja grande", "comum": "Mistura industrial para chantilly (~500 g por grupo, bem gelada) · corante alimentício em gel · 1 bolo pré-assado por grupo. O recheio é trazido por cada grupo.", "info": "PREPARO PRÉVIO: as tigelas grandes e as bandejas devem ser lavadas e secas na aula imediatamente anterior a esta. A mistura para chantilly precisa estar em temperatura muito baixa — sem isso a emulsão não estabiliza. Bater até o ponto de picos firmes; passar do ponto vira manteiga.", "prep": "LIMPEZA: o chantilly tem alto teor de gordura. Tigelas, espátulas, facas, bicos e a bandeja da escola precisam de detergente desengordurante e esponja antes da devolução. Restos de bolo e creme vão para o lixo orgânico.", "fonte": "Roteiro experimento 2 — Coloides e chantilly", "arquivos": [{"nome": "Roteiro · Coloides e chantilly", "url": ""}, {"nome": "Questionário · Coloides e chantilly", "url": ""}]}, {"data": "2026-09-01", "disc": "QNC", "semana": "6ª", "titulo": "Prática 3 — Coagulação de proteínas: produção de tofu", "local": "Cozinha / Laboratório", "christian": "sim", "materiais": "1 panela leiteira · 1 chapa de aquecimento · 1 peneira grande · 1 pano Perfex · 1 escumadeira ou colher grande de cabo longo · 1 béquer pequeno (para diluir o coagulante) · 1 peso (frasco de vidro cheio de água)", "comum": "200 g de grãos de soja amarela por grupo · água filtrada (cerca de 1 L por grupo, de preferência morna) · cloreto de magnésio grau alimentício · liquidificador (pode ser compartilhado entre os grupos). Cada grupo traz o próprio recipiente plástico furado para a prensagem.", "info": "PREPARO PRÉVIO: a soja precisa ficar de molho em água por 8 a 12 h — deixar de molho na véspera. Coagulação entre 75 e 80 °C, depois de 10 min de fervura. Prensagem de 20 a 30 min.", "prep": "RESÍDUOS: o okara (resíduo sólido retido no pano) é resíduo orgânico; o soro pode ser descartado na pia.", "fonte": "EXPERIMENTO 3 – Coagulação de proteínas (produção de tofu)", "arquivos": [{"nome": "Roteiro · Tofu", "url": ""}, {"nome": "Questionário · Tofu", "url": ""}]}, {"data": "2026-09-08", "disc": "QNC", "semana": "7ª", "titulo": "Prática 4 — Criação das receitas de sorvete (produção posterior na Amoratto)", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks", "info": "Aula de criação, sem bancada. Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-09-15", "disc": "QNC", "semana": "9ª", "titulo": "Prática 5 — Gelificação iônica: esferificação (caviar de frutas)", "local": "Laboratório de trás", "christian": "sim", "materiais": "1 béquer com mais de 250 mL (solução de alginato) · 2 panelas leiteiras (uma para o banho de cálcio, outra para o banho de lavagem) · pipetas de Pasteur · 1 peneira pequena · 1 colher ou bastão de vidro · 1 mixer de mão", "comum": "Bancada central / mesa do professor: balança(s) · 2 garrafas de água mineral · xarope Monin de maçã verde · suco de uva puro · suco de manga puro · copinhos descartáveis ou colheres limpas para a degustação. Por grupo: 2 g de alginato de sódio e 5 g de lactato ou cloreto de cálcio (grau culinário).", "info": "HIGIENE RIGOROSA: os alunos degustam o produto final — todas as vidrarias, equipamentos, bancadas e utensílios lavados com água e detergente neutro antes da montagem, com atenção especial aos béqueres usados em outros experimentos. A solução de alginato precisa descansar de 15 a 30 min depois de batida, para as bolhas de ar subirem.", "prep": "ORGANIZAÇÃO DO ESPAÇO: retirar das bancadas os materiais do experimento dos 2ºs anos (apenas do laboratório de trás). O experimento dos 2ºs anos precisa ser remontado na quarta-feira, porque eles repetem os experimentos da semana na quinta. Descarte: banhos de cálcio e de lavagem não são tóxicos, vão direto na pia; restos de esferas no lixo orgânico.", "fonte": "EXPERIMENTO 4 – Gelificação iônica · Preparação do laboratório – Gelificação", "arquivos": [{"nome": "Roteiro · Esferificação", "url": ""}, {"nome": "Preparação do laboratório · Esferificação", "url": ""}, {"nome": "Questionário · Esferificação", "url": ""}]}, {"data": "2026-09-22", "disc": "QNC", "semana": "10ª", "titulo": "Saída de campo — indústria de alimentos Amoratto", "local": "Externo", "christian": "nao", "materiais": "", "comum": "", "info": "Data ainda a confirmar com a empresa.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-09-29", "disc": "QNC", "semana": "11ª", "titulo": "Apresentação do projeto final e da receita industrial", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks; embalagens de alimentos trazidas pelos alunos", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": [{"nome": "Critérios de avaliação · Projeto final", "url": ""}]}, {"data": "2026-10-06", "disc": "QNC", "semana": "12ª", "titulo": "Teste da receita escolhida: produção do produto na cozinha", "local": "Cozinha", "christian": "sim", "materiais": "A definir com cada grupo — cada equipe traz os próprios ingredientes", "comum": "", "info": "A lista de utensílios só fecha depois que os grupos entregarem as receitas, na aula de 29/09.", "prep": "Combinar de enviar a lista final ao Christian logo após a aula de 29/09 — são só 5 dias úteis entre uma aula e outra.", "fonte": "", "arquivos": []}, {"data": "2026-10-13", "disc": "QNC", "semana": "13ª", "titulo": "FERIADO — antecipação do Dia do Professor", "local": "—", "christian": "nao", "materiais": "", "comum": "", "info": "Sem aula.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-10-20", "disc": "QNC", "semana": "14ª", "titulo": "Tabela nutricional e calorias; projeto Lupa; FatSecret e Canva", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-10-27", "disc": "QNC", "semana": "15ª", "titulo": "Criação da embalagem, design do rótulo e precificação", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-11-03", "disc": "QNC", "semana": "16ª", "titulo": "Finalização do projeto e preparação da socialização", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-11-07", "disc": "QNC", "semana": "—", "titulo": "SOCIALIZAÇÃO — degustação dos produtos alimentícios", "local": "Colégio", "christian": "sim", "materiais": "Mesas, toalhas, pratos e copos descartáveis, guardanapos, gelo e isopor, extensões e tomadas, lixeiras", "comum": "", "info": "Evento de sábado. Como há degustação, valem as mesmas exigências de higiene das práticas na cozinha.", "prep": "A montagem das bancadas precisa estar concluída antes da abertura ao público.", "fonte": "", "arquivos": []}, {"data": "2026-11-10", "disc": "QNC", "semana": "17ª", "titulo": "Devolutivas, autoavaliação e fechamento das notas", "local": "Sala", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-11-17", "disc": "QNC", "semana": "18ª", "titulo": "Reavaliação semestral das eletivas", "local": "Sala", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-07-30", "disc": "QADL", "semana": "1ª", "titulo": "Apresentação da disciplina, regras de laboratório e início dos estudos de caso", "local": "Laboratório", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-06", "disc": "QADL", "semana": "2ª", "titulo": "Estudo de caso: hipóteses, evidências químicas e planejamento dos ensaios", "local": "Laboratório", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-13", "disc": "QADL", "semana": "3ª", "titulo": "Estudo de caso: execução dos ensaios no laboratório", "local": "Laboratório", "christian": "sim", "materiais": "Varia conforme o ensaio planejado por cada grupo", "comum": "", "info": "EPI: avental, óculos e luvas. A lista sai do planejamento feito pelos grupos na aula anterior.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-20", "disc": "QADL", "semana": "4ª", "titulo": "Apresentação dos estudos de caso (cada grupo em sua sala)", "local": "Salas de aula", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-08-27", "disc": "QADL", "semana": "5ª", "titulo": "Saída de campo — ETA CASAN (tratamento de água)", "local": "Externo", "christian": "nao", "materiais": "", "comum": "", "info": "Data em agendamento; pode ser permutada com a visita ao Quimidex. Alunos podem usar o celular para registrar imagens do relatório.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-09-03", "disc": "QADL", "semana": "6ª", "titulo": "Saída de campo — Quimidex / UFSC", "local": "Externo", "christian": "nao", "materiais": "", "comum": "", "info": "Data em agendamento; pode ser permutada com a visita à CASAN.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-09-10", "disc": "QADL", "semana": "7ª", "titulo": "Palestra de química forense — Polícia Científica / IGP", "local": "Auditório", "christian": "nao", "materiais": "", "comum": "Projetor e som", "info": "Agendado, aguardando confirmação do convidado.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-09-17", "disc": "QADL", "semana": "9ª", "titulo": "Apresentação do projeto final; fragrâncias I: notas, acordes e pirâmide olfativa", "local": "Sala", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": [{"nome": "Critérios de avaliação · Projeto final", "url": ""}]}, {"data": "2026-09-24", "disc": "QADL", "semana": "10ª", "titulo": "Fragrâncias II: óleos essenciais, extração, ésteres, fixadores e solventes", "local": "Sala / Laboratório", "christian": "talvez", "materiais": "Só se houver demonstração de extração", "comum": "", "info": "CONFIRMAR até o prazo se haverá demonstração prática. Se a aula for só teórica, o Christian não precisa ser acionado.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-10-01", "disc": "QADL", "semana": "11ª", "titulo": "Prática — Saponificação (saboaria artesanal)", "local": "Laboratório", "christian": "sim", "materiais": "2 béqueres de 400 ou 600 mL (um deles totalmente seco, para a soda) · 1 béquer de 250 ou 400 mL (gorduras) · 1 béquer pequeno de 50 mL seco (essência) · 1 panela leiteira · 1 colher · 1 bastão de vidro · 1 bacia plástica resistente ao calor · 1 chapa de aquecimento · 1 mixer de mão · 1 termômetro tipo espeto até 100 °C · 1 espátula de silicone ou colher de pau", "comum": "POR LABORATÓRIO (8 bancadas): água destilada 1624 g · NaOH em pérolas 728 g · banha 1896 g · óleo de babaçu sólido 1088 g · óleo de girassol 816 g · óleo de rícino 816 g · manteiga de karité 544 g · ácido esteárico 272 g · essência 232 g. — CAPELA: potes de NaOH, 3 pissetas cheias de água destilada e 1 balança. BANCADA CENTRAL: 1 balança, gorduras sólidas (banha, karité, ácido esteárico, babaçu) com uma espátula exclusiva por pote, e os óleos líquidos nas garrafas originais.", "info": "EPI OBRIGATÓRIO: 20 óculos de proteção por laboratório e luvas de nitrila. O preparo da lixívia é altamente exotérmico e libera vapores irritantes — só na capela. Por grupo: 203 g de água + 91 g de NaOH; blend de 237 g de banha, 68 g de karité, 34 g de ácido esteárico, 136 g de babaçu, 102 g de girassol e 102 g de rícino; 29 g de essência pesados pelos próprios alunos. As duas fases precisam se encontrar na mesma faixa de temperatura.", "prep": "ANTES DA MONTAGEM: remover todos os materiais, vidrarias e resíduos de práticas anteriores — as bancadas e a mesa central devem conter apenas os itens da saponificação. Balanças: são 4 no total, 2 por laboratório, uma fixa na capela e outra na bancada central. Os moldes de papelão forrados com papel manteiga são montados pelo professor na quinta de manhã. Papel toalha para limpar vidrarias engorduradas antes da pia e baldinhos para o descarte dos papéis com gordura. DEPOIS: descanso de 24 a 48 h antes de desenformar e cura de 4 a 6 semanas — reservar prateleira identificada.", "fonte": "Reação de saponificação · Preparação do laboratório – Saponificação", "arquivos": [{"nome": "Roteiro · Saponificação", "url": ""}, {"nome": "Preparação do laboratório · Saponificação", "url": ""}, {"nome": "Questionário · Saponificação", "url": ""}]}, {"data": "2026-10-08", "disc": "QADL", "semana": "12ª", "titulo": "Formulação do perfume e do creme: cálculo das concentrações", "local": "Sala / Laboratório", "christian": "talvez", "materiais": "Fichas de fórmula e calculadora", "comum": "Dossiê de matérias-primas e as amostras para avaliação olfativa das 5 bases", "info": "Aula de planejamento: cada aluno monta a fórmula do creme (lote de 100 g) e da fragrância (lote de 8,00 g) antes de ir para a bancada. Acionar o Christian só se houver pesagem-teste.", "prep": "Documentos: “Guia Técnico para formulação de creme hidratante”, “Catálogo de Composição de Fragrâncias” e “Plano de Desenvolvimento e Hipótese Cosmética”.", "fonte": "", "arquivos": [{"nome": "Guia do creme hidratante · Formulação", "url": ""}, {"nome": "Catálogo de fragrâncias · Formulação", "url": ""}, {"nome": "Ficha de planejamento · Formulação", "url": ""}]}, {"data": "2026-10-15", "disc": "QADL", "semana": "13ª", "titulo": "Produção do perfume: composição da fragrância (lote de 8,00 g)", "local": "Laboratório", "christian": "sim", "materiais": "1 frasco de vidro de 10 mL por aluno · pipetas limpas (uma por material, para não contaminar) · etiquetas · a ficha de fórmula preenchida", "comum": "Balanças de precisão (0,01 g) nas estações de pesagem · os materiais de perfumaria já pré-diluídos e etiquetados, organizados por família olfativa · as 5 bases", "info": "Todo o processo é por massa, não por volume. Sequência: tarar o frasco, pesar a base (40–60% da fórmula) e depois cada modificador, um de cada vez, até fechar 8,00 g. Materiais a 1% e 0,1% (heptoato de alila, calone, helional, benzaldeído, agarwood, civet) são de altíssimo impacto — adicionar em incrementos de cerca de 0,05 g.", "prep": "Prever fila nas balanças: a pesagem é o gargalo da aula. Vale distribuir as balanças em estações, como na saponificação.", "fonte": "Catálogo de Composição de Fragrâncias", "arquivos": [{"nome": "Catálogo de fragrâncias · Formulação", "url": ""}, {"nome": "Ficha de planejamento · Formulação", "url": ""}]}, {"data": "2026-10-22", "disc": "QADL", "semana": "14ª", "titulo": "Produção do creme (emulsão O/A) — parte 1: pesagem, aquecimento e emulsificação", "local": "Laboratório", "christian": "sim", "materiais": "2 béqueres (fase A e fase B) · chapa de aquecimento com agitação magnética e barra magnética · 2 termômetros · 1 mixer de mão · espátulas · pote de envase identificado", "comum": "FASE A: água deionizada, glicerina, propilenoglicol. FASE B: óleo de girassol, óleo de coco babaçu, óleo de rícino, manteiga de karité, ácido esteárico, álcool cetoestearílico, Olivem 1000, monoestearato de glicerila, BTMS-25. FASE C: sorbato de potássio + benzoato de sódio. Balança analítica nas estações de pesagem.", "info": "Lote de 100 g por aluno, cada um com a sua própria fórmula — as quantidades variam de grupo para grupo. A água precisa ser DEIONIZADA: cátions da água comum quebram a emulsão. As duas fases sobem juntas até 75 °C e são unidas ainda quentes, sob agitação de alta rotação por 3 a 5 min. Os conservantes (fase C) só entram abaixo de 40 °C, porque são termossensíveis.", "prep": "São necessários dois pontos de aquecimento simultâneos por bancada. O creme precisa repousar 24 h em temperatura ambiente antes da avaliação de qualidade — reservar espaço identificado.", "fonte": "Guia Técnico para formulação de creme hidratante", "arquivos": [{"nome": "Guia do creme hidratante · Formulação", "url": ""}, {"nome": "Ficha de planejamento · Formulação", "url": ""}]}, {"data": "2026-10-29", "disc": "QADL", "semana": "15ª", "titulo": "Produção do creme — parte 2: controle de qualidade, ajuste e envase", "local": "Laboratório", "christian": "sim", "materiais": "Fitas de pH ou pHmetro · espátulas · potes de envase · etiquetas", "comum": "Ácido cítrico para ajuste de pH · fragrâncias · conservantes de reposição", "info": "Avaliação após 24 h de repouso: aspecto (brilhante e homogêneo ou com quebra e separação de fases), viscosidade e sensorial. O pH precisa ficar abaixo de 5,5 — é a condição para o sorbato e o benzoato funcionarem.", "prep": "CONFERIR COM O PROFESSOR: o guia técnico descreve a adição dos conservantes na mesma sessão da emulsificação (abaixo de 40 °C), enquanto o planejamento separa isso para esta aula. Vale alinhar antes de montar.", "fonte": "Guia Técnico para formulação de creme hidratante", "arquivos": [{"nome": "Guia do creme hidratante · Formulação", "url": ""}]}, {"data": "2026-11-05", "disc": "QADL", "semana": "16ª", "titulo": "Finalização: rotulagem, embalagem, precificação e apresentação", "local": "Laboratório de mídias", "christian": "nao", "materiais": "", "comum": "Notebooks; material de rotulagem", "info": "Reservar o laboratório de mídias.", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-11-07", "disc": "QADL", "semana": "—", "titulo": "SOCIALIZAÇÃO — apresentação dos produtos cosméticos", "local": "Colégio", "christian": "sim", "materiais": "Mesas, toalhas, suportes e expositores, espelhos, fitas de papel e algodão para teste olfativo, lixeiras", "comum": "", "info": "Evento de sábado. Os sabões da saponificação (01/10) completam a cura por volta de 12/11 a 26/11 — confirmar se estarão prontos para a exposição.", "prep": "A montagem das bancadas de exposição precisa estar concluída antes da abertura ao público.", "fonte": "", "arquivos": []}, {"data": "2026-11-12", "disc": "QADL", "semana": "17ª", "titulo": "Reavaliação semestral das eletivas", "local": "Sala", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}, {"data": "2026-11-19", "disc": "QADL", "semana": "18ª", "titulo": "Devolutivas, autoavaliação e finalização da disciplina", "local": "Sala", "christian": "nao", "materiais": "", "comum": "", "info": "", "prep": "", "fonte": "", "arquivos": []}], "feriados": {"2026-09-07": "Independência", "2026-10-12": "N. Sra. Aparecida", "2026-10-13": "Antecipação do Dia do Professor (escola)", "2026-11-02": "Finados", "2026-11-20": "Consciência Negra"}};
+/* ==================================================== */
+
+const MESL=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto",
+            "setembro","outubro","novembro","dezembro"];
+const MESC=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const DWC=["dom","seg","ter","qua","qui","sex","sáb"];
+const DWL=["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"];
+const NOME={QNC:"Química na Cozinha",QADL:"Química além dos Livros",EXTRA:"Atividade avulsa"};
+const SERIE={QNC:"1ª série",QADL:"2ª série",EXTRA:""};
+
+const pd=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const HOJE=(()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate())})();
 const dif=(s,b)=>Math.round((pd(s)-b)/864e5);
 const br=s=>s.slice(8)+"/"+s.slice(5,7);
-let F={disc:"todas",vis:"tudo",pass:false};
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const FERIADOS=BASE.feriados;
+const eUtil=d=>d.getDay()>0&&d.getDay()<6&&!FERIADOS[iso(d)];
+function recuar(data,n){let x=pd(data),c=0;
+  while(c<n){x.setDate(x.getDate()-1);if(eUtil(x))c++;}
+  return iso(x);}
+
+let ITENS=[], COMENTARIOS={}, F={vis:"cal",disc:"todas"}, mesAtual=null;
 const PROF=new URLSearchParams(location.search).get("prof")==="1";
-const DIAS={seg:"segunda-feira",ter:"terça-feira",qua:"quarta-feira",qui:"quinta-feira",sex:"sexta-feira","sáb":"sábado",dom:"domingo"};
-function email(i){
- const partes=[i.materiais?`Por bancada: ${i.materiais}`:"",i.comum?`Uso comum: ${i.comum}`:"",
-   i.info?`Observações: ${i.info}`:"",i.prep?`Organização: ${i.prep}`:""].filter(Boolean).join("\n\n");
- return `Assunto: Laboratório – ${NOME[i.disc]} – aula de ${br(i.data)}
+
+/* ---------- CSV ---------- */
+function csv(t){const r=[];let f=[],c="",q=false;
+ for(let i=0;i<t.length;i++){const ch=t[i];
+  if(q){ if(ch==='"'){ if(t[i+1]==='"'){c+='"';i++} else q=false } else c+=ch }
+  else if(ch==='"')q=true;
+  else if(ch===","){f.push(c);c=""}
+  else if(ch==="\n"){f.push(c);r.push(f);f=[];c=""}
+  else if(ch!=="\r")c+=ch }
+ f.push(c); if(f.length>1||f[0].trim())r.push(f); return r}
+const norm=s=>(s||"").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function col(h,...nomes){for(const n of nomes){const i=h.indexOf(norm(n));if(i>=0)return i}return -1}
+function dataISO(v){
+  v=(v||"").trim();
+  const m=v.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})$/);
+  if(m)return `${m[3].length===2?"20"+m[3]:m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  if(/^\d{4}-\d{1,2}-\d{1,2}$/.test(v)){const[a,b,c]=v.split("-");
+    return `${a}-${b.padStart(2,"0")}-${c.padStart(2,"0")}`}
+  return null;
+}
+function parseArquivos(txt){
+  return (txt||"").split(";").map(p=>p.trim()).filter(Boolean).map(p=>{
+    const i=p.indexOf("::");
+    if(i<0)return {nome:p,url:""};
+    return {nome:p.slice(0,i).trim(),url:p.slice(i+2).trim()};
+  });
+}
+
+/* ---------- montagem das linhas ---------- */
+function montarItens(linhas){
+  const out=[];
+  linhas.forEach(a=>{
+    const d=a.data;
+    out.push(Object.assign({},a,{id:a.id||`${a.disc}-${d}`,tipo:"aula",dow:DWC[pd(d).getDay()],
+      prazo:(a.christian==="sim"||a.christian==="talvez")?recuar(d,4):null}));
+    if(a.christian==="sim"||a.christian==="talvez"){
+      const curto=a.titulo.split("—").pop().trim();
+      const m=recuar(d,1);
+      out.push(Object.assign({},a,{id:`${a.disc}-${d}-m`,tipo:"montagem",data:m,dow:DWC[pd(m).getDay()],
+        titulo:`Montagem — ${curto}`,refData:d,prazo:null}));
+      out.push(Object.assign({},a,{id:`${a.disc}-${d}-d`,tipo:"desmontagem",dow:DWC[pd(d).getDay()],
+        titulo:`Desmontagem e limpeza — ${curto}`,refData:d,prazo:null,materiais:"",comum:"",
+        info:"Ao final da aula: lavagem da vidraria, guarda dos reagentes e organização das bancadas.",
+        arquivos:[]}));
+    }
+  });
+  return out.sort((a,b)=> a.data===b.data
+    ? ({montagem:0,aula:1,desmontagem:2})[a.tipo]-({montagem:0,aula:1,desmontagem:2})[b.tipo]
+    : (a.data<b.data?-1:1));
+}
+
+function aplicarPlanilha(txt){
+  const r=csv(txt).filter(l=>l.some(x=>x.trim()));
+  if(r.length<2)return 0;
+  const h=r[0].map(norm);
+  const iD=col(h,"data"), iE=col(h,"eletiva"), iS=col(h,"semana"), iT=col(h,"titulo"),
+        iL=col(h,"local"), iC=col(h,"christian","precisa do christian"),
+        iM=col(h,"materiais por bancada","materiais"), iU=col(h,"uso comum"),
+        iI=col(h,"informacoes","informacoes uteis"), iO=col(h,"organizacao"),
+        iA=col(h,"arquivos");
+  if(iD<0||iT<0)return 0;
+  const linhas=[];
+  r.slice(1).forEach(l=>{
+    const d=dataISO(l[iD]); if(!d)return;
+    const t=(l[iT]||"").trim(); if(!t)return;
+    const e=(l[iE]||"").trim().toUpperCase();
+    const disc=e.includes("QNC")?"QNC":e.includes("QADL")?"QADL":"EXTRA";
+    const c=norm(l[iC]||"");
+    linhas.push({data:d,disc,semana:(l[iS]||"").trim()||"—",titulo:t,
+      local:(l[iL]||"").trim()||"A definir",
+      christian:c.startsWith("s")?"sim":c.startsWith("t")||c.startsWith("c")?"talvez":"nao",
+      materiais:(l[iM]||"").trim(), comum:(l[iU]||"").trim(),
+      info:(l[iI]||"").trim(), prep:(l[iO]||"").trim(),
+      arquivos:parseArquivos(l[iA]), fonte:""});
+  });
+  if(!linhas.length)return 0;
+  ITENS=montarItens(linhas);
+  return linhas.length;
+}
+
+function aplicarComentarios(txt){
+  const r=csv(txt).filter(l=>l.some(x=>x.trim()));
+  if(r.length<2)return 0;
+  const h=r[0].map(norm);
+  const iQ=col(h,"carimbo de data/hora","timestamp","data"),
+        iE=col(h,"evento","codigo do evento","atividade"),
+        iN=col(h,"nome","quem"), iC=col(h,"comentario","mensagem","recado");
+  if(iE<0||iC<0)return 0;
+  COMENTARIOS={}; let n=0;
+  r.slice(1).forEach(l=>{
+    const ev=(l[iE]||"").trim(); const c=(l[iC]||"").trim();
+    if(!ev||!c)return;
+    (COMENTARIOS[ev]=COMENTARIOS[ev]||[]).push({
+      quando:(l[iQ]||"").trim(), quem:(l[iN]||"").trim()||"anônimo", texto:c});
+    n++;
+  });
+  return n;
+}
+
+/* ---------- status do prazo ---------- */
+function status(i){
+  if(!i.prazo||i.tipo!=="aula")return null;
+  const n=dif(i.prazo,HOJE);
+  if(dif(i.data,HOJE)<0)return{c:"p-done",t:`prazo de aviso era ${br(i.prazo)}`};
+  if(n<0)return{c:"p-late",t:`aviso ao Christian estava previsto para ${br(i.prazo)}`};
+  if(n===0)return{c:"p-late",t:"aviso ao Christian: hoje é o último dia"};
+  if(n<=3)return{c:"p-soon",t:`aviso ao Christian até ${br(i.prazo)} · faltam ${n} dia${n>1?"s":""}`};
+  return{c:"p-ok",t:`aviso ao Christian até ${br(i.prazo)}`};
+}
+const filtrados=()=>ITENS.filter(i=>F.disc==="todas"||i.disc===F.disc||i.disc==="EXTRA");
+const classeEv=i=>i.tipo!=="aula"?i.tipo:(i.disc==="EXTRA"?"novo":i.disc.toLowerCase());
+
+/* ---------- calendário ---------- */
+function limites(){
+  const ds=ITENS.map(i=>i.data).sort();
+  const a=ds[0]||iso(HOJE), b=ds[ds.length-1]||iso(HOJE);
+  return [a.slice(0,7),b.slice(0,7)];
+}
+function renderCal(){
+  const [min,max]=limites();
+  if(!mesAtual)mesAtual = (iso(HOJE).slice(0,7)>=min&&iso(HOJE).slice(0,7)<=max)?iso(HOJE).slice(0,7):min;
+  if(mesAtual<min)mesAtual=min; if(mesAtual>max)mesAtual=max;
+  const [Y,M]=mesAtual.split("-").map(Number);
+  document.getElementById("mesnome").textContent=MESL[M-1][0].toUpperCase()+MESL[M-1].slice(1)+" de "+Y;
+  document.getElementById("ant").disabled = mesAtual<=min;
+  document.getElementById("prox").disabled = mesAtual>=max;
+
+  const g=document.getElementById("grade"); g.innerHTML="";
+  ["dom","seg","ter","qua","qui","sex","sáb"].forEach(d=>{
+    const e=document.createElement("div");e.className="dw";e.textContent=d;g.appendChild(e)});
+
+  const primeiro=new Date(Y,M-1,1);
+  const ini=new Date(Y,M-1,1-primeiro.getDay());
+  const porDia={}; filtrados().forEach(i=>(porDia[i.data]=porDia[i.data]||[]).push(i));
+
+  const noMes=new Date(Y,M,0).getDate();
+  const total=Math.ceil((primeiro.getDay()+noMes)/7)*7;
+  for(let k=0;k<total;k++){
+    const d=new Date(ini.getFullYear(),ini.getMonth(),ini.getDate()+k);
+    const s=iso(d), doMes=d.getMonth()===M-1;
+    const cel=document.createElement("div");
+    cel.className="dia"+(doMes?"":" fora")+((d.getDay()===0||d.getDay()===6)?" fds":"")
+      +(s===iso(HOJE)?" hoje":"");
+    const n=document.createElement("div");n.className="num";n.textContent=d.getDate();
+    cel.appendChild(n);
+    if(FERIADOS[s]){const f=document.createElement("div");f.className="feriado";
+      f.textContent=FERIADOS[s];cel.appendChild(f)}
+    (porDia[s]||[]).forEach(i=>{
+      const b=document.createElement("button");
+      b.className="ev "+classeEv(i);
+      b.textContent=(i.tipo==="montagem"?"⚙ ":i.tipo==="desmontagem"?"↺ ":"")+i.titulo;
+      b.title=i.titulo;
+      b.onclick=()=>{location.hash="e="+encodeURIComponent(i.id)};
+      cel.appendChild(b);
+    });
+    g.appendChild(cel);
+  }
+}
+
+/* ---------- lista ---------- */
+function renderLista(){
+  const L=document.getElementById("vlista"); L.innerHTML=""; let mes="";
+  filtrados().forEach(i=>{
+    const k=i.data.slice(0,7);
+    if(k!==mes){mes=k;const h=document.createElement("h2");
+      h.textContent=`${MESL[+k.slice(5)-1]} de ${k.slice(0,4)}`;L.appendChild(h)}
+    const dd=pd(i.data), st=status(i);
+    const b=document.createElement("button");
+    b.className="it "+classeEv(i)+(dif(i.data,HOJE)<0?" past":"");
+    const tags=[];
+    if(i.disc!=="EXTRA")tags.push(`<span class="t ${i.disc==="QNC"?"t-qnc":"t-qadl"}">${i.disc}</span>`);
+    else tags.push('<span class="t t-new">AVULSA</span>');
+    if(i.tipo==="montagem")tags.push('<span class="t t-mont">MONTAGEM</span>');
+    if(i.tipo==="desmontagem")tags.push('<span class="t t-desm">DESMONTAGEM</span>');
+    if(i.local)tags.push(`<span class="t t-x">${esc(i.local)}</span>`);
+    b.innerHTML=`<div class="dt"><div class="dd">${String(dd.getDate()).padStart(2,"0")}</div>
+      <div class="mm">${MESC[dd.getMonth()]}</div><div class="wd">${i.dow}</div></div>
+      <div><div class="tg">${tags.join("")}</div><p class="tt">${esc(i.titulo)}</p>
+      ${st?`<div class="pz ${st.c}">${st.t}</div>`:""}</div>`;
+    b.onclick=()=>{location.hash="e="+encodeURIComponent(i.id)};
+    L.appendChild(b);
+  });
+}
+
+/* ---------- detalhe ---------- */
+function emailTexto(i){
+  const p=[i.materiais?`Por bancada: ${i.materiais}`:"", i.comum?`Uso comum: ${i.comum}`:"",
+    i.info?`Observações: ${i.info}`:"", i.prep?`Organização: ${i.prep}`:""].filter(Boolean).join("\n\n");
+  return `Assunto: Laboratório – ${NOME[i.disc]} – aula de ${br(i.data)}
 
 Olá, Christian!
 
-Segue a solicitação de apoio para a aula de ${NOME[i.disc]}, na ${DIAS[i.dow]} ${br(i.data)}/2026, 3ª e 4ª aulas da tarde, em ${i.local}.
+Segue a solicitação de apoio para a aula de ${NOME[i.disc]}, na ${DWL[pd(i.data).getDay()]} ${br(i.data)}, 3ª e 4ª aulas da tarde, em ${i.local}.
 
 Atividade: ${i.titulo}
 
-${partes}
+${p}
 
-Montagem prevista para ${i.prazo?"o dia útil anterior":"a véspera"}; ao final da aula precisamos do apoio para a desmontagem e a organização das bancadas.
+A montagem está prevista para o dia útil anterior; ao final da aula precisamos do apoio para a desmontagem e a organização das bancadas.
 
 Qualquer dúvida ou impossibilidade, me avise para reprogramarmos.
 
 Obrigado!
 Henrique Ávila`;
 }
-let ITENS=D.itens.slice();
 
-/* ---- fonte externa opcional: planilha do Google publicada como CSV ---- */
-function csv(t){const r=[];let f=[],c="",q=false;
- for(let i=0;i<t.length;i++){const ch=t[i];
-  if(q){ if(ch==='"'){ if(t[i+1]==='"'){c+='"';i++} else q=false } else c+=ch }
-  else if(ch==='"')q=true;
-  else if(ch===","||ch===";"){f.push(c);c=""}
-  else if(ch==="\n"){f.push(c);r.push(f);f=[];c=""}
-  else if(ch!=="\r")c+=ch }
- f.push(c); if(f.length>1||f[0])r.push(f); return r}
-const norm=s=>(s||"").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
-function aplicar(txt){
-  const r=csv(txt).filter(l=>l.some(x=>x.trim()));
-  if(r.length<2) return 0;
-  const h=r[0].map(norm), idx=n=>h.indexOf(n);
-  const [iD,iE,iT,iL,iM,iI]=["data","eletiva","titulo","local","materiais","informacoes"].map(idx);
-  if(iD<0||iT<0) return 0;
-  let n=0;
-  r.slice(1).forEach(l=>{
-    let dt=(l[iD]||"").trim(); if(!dt) return;
-    const m=dt.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
-    if(m) dt=`${m[3].length===2?"20"+m[3]:m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
-    if(!/^\d{4}-\d{2}-\d{2}$/.test(dt)) return;
-    const disc=(l[iE]||"").trim().toUpperCase().includes("QNC")?"QNC":
-               (l[iE]||"").trim().toUpperCase().includes("QADL")?"QADL":"EXTRA";
-    ITENS.push({id:"x"+(n++),tipo:"aula",novo:true,disc,data:dt,semana:"—",
-      titulo:(l[iT]||"").trim(),local:(l[iL]||"").trim()||"A definir",monitor:"nao",
-      materiais:(l[iM]||"").trim(),comum:"",prep:"",fonte:"",info:(l[iI]||"").trim(),prazo:null,
-      dow:["dom","seg","ter","qua","qui","sex","sáb"][pd(dt).getDay()]});
-  });
-  return n;
+function renderDetalhe(id){
+  const i=ITENS.find(x=>x.id===id);
+  const D=document.getElementById("detalhe");
+  if(!i){D.innerHTML='<button class="voltar" onclick="location.hash=\'\'">‹ Voltar</button>'
+    +'<div class="det"><p>Atividade não encontrada. Ela pode ter sido removida da planilha.</p></div>';
+    return}
+  const st=status(i);
+  const chave = i.refData ? `${i.disc}-${i.refData}` : i.id;
+  const coms = COMENTARIOS[chave]||COMENTARIOS[i.id]||[];
+  const tipoTxt={aula:"Aula",montagem:"Montagem do laboratório",desmontagem:"Desmontagem e limpeza"}[i.tipo];
+  const horario = i.tipo==="aula" ? " · 3ª e 4ª aulas da tarde" : "";
+
+  let arq="";
+  if(i.tipo!=="desmontagem"){
+    const lista=(i.arquivos||[]).filter(a=>a.url);
+    arq=`<div class="sec"><h3>Arquivos</h3><div class="arq">`
+      + (lista.length
+         ? lista.map(a=>`<a href="${esc(a.url)}" target="_blank" rel="noopener">
+             <span class="ic">📄</span><span>${esc(a.nome)}</span></a>`).join("")
+         : '<span class="sem">Nenhum arquivo vinculado a esta atividade.</span>')
+      + `</div></div>`;
+  }
+
+  let com=`<div class="sec"><h3>Comentários</h3>`;
+  com += coms.length
+    ? coms.map(c=>`<div class="com"><div class="quem"><b>${esc(c.quem)}</b>${c.quando?" · "+esc(c.quando):""}</div>
+        <p>${esc(c.texto)}</p></div>`).join("")
+    : '<p style="color:var(--mut);font-size:.9rem">Ainda não há comentários nesta atividade.</p>';
+  if(CFG.formUrl){
+    const u=CFG.formUrl+(CFG.formUrl.includes("?")?"&":"?")+"usp=pp_url&"
+      +encodeURIComponent(CFG.formCampoEvento)+"="+encodeURIComponent(chave);
+    com+=`<p style="margin-top:12px"><a class="btn" href="${esc(u)}" target="_blank" rel="noopener">Escrever um comentário</a></p>
+      <p class="fonte-info">Comentários novos aparecem aqui em alguns minutos.</p>`;
+  }else{
+    com+='<p class="aviso" style="margin-top:12px">O formulário de comentários ainda não foi configurado.</p>';
+  }
+  com+="</div>";
+
+  D.innerHTML=`
+   <button class="voltar" onclick="location.hash=''">‹ Voltar ao calendário</button>
+   <div class="det">
+     <div class="tg">
+       ${i.disc!=="EXTRA"?`<span class="t ${i.disc==="QNC"?"t-qnc":"t-qadl"}">${NOME[i.disc]} · ${SERIE[i.disc]}</span>`
+                         :'<span class="t t-new">ATIVIDADE AVULSA</span>'}
+       <span class="t ${i.tipo==="montagem"?"t-mont":i.tipo==="desmontagem"?"t-desm":"t-x"}">${tipoTxt}</span>
+       ${i.semana&&i.semana!=="—"&&i.tipo==="aula"?`<span class="t t-x">${esc(i.semana)} semana</span>`:""}
+     </div>
+     <h1>${esc(i.titulo)}</h1>
+     <p class="quando">${DWL[pd(i.data).getDay()]}, ${pd(i.data).getDate()} de ${MESL[pd(i.data).getMonth()]} de ${i.data.slice(0,4)}${horario} · ${esc(i.local)}</p>
+     ${i.refData?`<p class="fonte-info">Referente à aula de ${br(i.refData)}.</p>`:""}
+     ${st?`<p><span class="pz ${st.c}">${st.t}</span>
+        ${PROF?`<button class="chip" id="mail">Copiar e-mail</button>`:""}</p>`:""}
+     ${i.materiais?`<div class="sec"><h3>Materiais por bancada</h3><p>${esc(i.materiais)}</p></div>`:""}
+     ${i.comum?`<div class="sec"><h3>Uso comum · bancada central e mesa do professor</h3><p>${esc(i.comum)}</p></div>`:""}
+     ${i.info?`<div class="sec"><h3>Informações úteis</h3><p>${esc(i.info)}</p></div>`:""}
+     ${i.prep?`<div class="sec"><h3>Organização do espaço</h3><p>${esc(i.prep)}</p></div>`:""}
+     ${arq}
+     ${com}
+   </div>`;
+  const mb=document.getElementById("mail");
+  if(mb)mb.onclick=()=>{const ta=document.getElementById("txt");
+    ta.value=emailTexto(i);document.getElementById("dlg").showModal();ta.select()};
 }
 
-function status(it){
-  if(!it.prazo)return null;
-  const n=dif(it.prazo,HOJE);
-  if(dif(it.data,HOJE)<0)return{c:"p-done",t:`prazo de aviso era ${br(it.prazo)}`};
-  if(n<0)return{c:"p-late",t:`aviso ao Christian estava previsto para ${br(it.prazo)}`};
-  if(n===0)return{c:"p-late",t:`aviso ao Christian: hoje é o último dia`};
-  if(n<=3)return{c:"p-soon",t:`aviso ao Christian até ${br(it.prazo)} · faltam ${n} dia${n>1?"s":""}`};
-  return{c:"p-ok",t:`aviso ao Christian até ${br(it.prazo)}`};
+/* ---------- roteamento ---------- */
+function rota(){
+  const h=location.hash.replace(/^#/,"");
+  const m=h.match(/^e=(.+)$/);
+  const P=document.getElementById("principal"), D=document.getElementById("detalhe");
+  if(m){P.classList.add("hide");D.classList.remove("hide");
+    renderDetalhe(decodeURIComponent(m[1]));window.scrollTo(0,0)}
+  else{D.classList.add("hide");P.classList.remove("hide");render()}
 }
-
 function render(){
-  const L=document.getElementById("lista");L.innerHTML="";
-  let mes="";
-  const ord=ITENS.slice().sort((a,b)=> a.data===b.data
-      ? ({montagem:0,aula:1,desmontagem:2})[a.tipo]-({montagem:0,aula:1,desmontagem:2})[b.tipo]
-      : (a.data<b.data?-1:1));
-  const vis=ord.filter(i=>
-      (F.disc==="todas"||i.disc===F.disc||i.disc==="EXTRA") &&
-      (F.vis==="tudo" || (F.vis==="praticas"&&i.tipo==="aula") ||
-       (F.vis==="monitor"&&(i.tipo!=="aula"||i.monitor!=="nao"))) &&
-      (!F.pass||dif(i.data,HOJE)>=0));
-  if(!vis.length){L.innerHTML='<div class="box">Nada para mostrar com esses filtros.</div>';return}
-  vis.forEach(i=>{
-    const k=i.data.slice(0,7);
-    if(k!==mes){mes=k;
-      const h=document.createElement("h2");h.textContent=MESL[+k.slice(5)-1]+" de 2026";L.appendChild(h);
-      Object.entries(D.feriados).filter(([f])=>f.slice(0,7)===k).forEach(([f,n])=>{
-        const e=document.createElement("div");e.className="fer";
-        e.textContent=`${br(f)} · feriado — ${n}`;L.appendChild(e)});
-    }
-    const dd=pd(i.data),st=status(i),passou=dif(i.data,HOJE)<0,hoje=dif(i.data,HOJE)===0;
-    const cls=i.tipo==="aula"?("aula-"+i.disc.toLowerCase()):i.tipo;
-    const el=document.createElement("div");
-    el.className=`it ${cls}${passou?" past":""}${hoje?" hoje":""}`;
-    const tags=[];
-    if(i.disc!=="EXTRA")tags.push(`<span class="t ${i.disc==="QNC"?"t-qnc":"t-qadl"}">${i.disc}</span>`);
-    if(i.tipo==="montagem")tags.push('<span class="t t-mont">MONTAGEM</span>');
-    if(i.tipo==="desmontagem")tags.push('<span class="t t-desm">DESMONTAGEM</span>');
-    if(i.novo)tags.push('<span class="t t-new">NOVA ATIVIDADE</span>');
-    if(i.local&&i.local!=="—")tags.push(`<span class="t t-x">${i.local}</span>`);
-    if(i.monitor==="talvez"&&i.tipo==="aula")tags.push('<span class="t t-x">Christian: confirmar</span>');
-    el.innerHTML=`<div class="dt"><div class="dd">${String(dd.getDate()).padStart(2,"0")}</div>
-      <div class="mm">${MES[dd.getMonth()]}</div><div class="dw">${i.dow}</div></div>
-      <div><div class="tg">${tags.join("")}</div><p class="tt">${i.titulo}</p>
-      ${i.materiais?`<p class="mat"><b>Por bancada:</b> ${i.materiais}</p>`:""}
-      ${i.comum?`<p class="mat"><b>Uso comum:</b> ${i.comum}</p>`:""}
-      ${(i.info||i.prep||i.fonte)?`<details><summary>Informações úteis e organização</summary>
-        ${i.info?`<div class="db">${i.info}</div>`:""}
-        ${i.prep?`<div class="db">${i.prep}</div>`:""}
-        ${i.fonte?`<div class="fonte">Roteiro completo em: ${i.fonte}</div>`:""}
-      </details>`:""}
-      ${st?`<div class="pz ${st.c}">${st.t}${PROF?`<button class="copy" data-id="${i.id}">Copiar e-mail</button>`:""}</div>`:""}</div>`;
-    L.appendChild(el);
-  });
-  L.querySelectorAll("button.copy").forEach(b=>b.onclick=()=>{
-    const i=ITENS.find(x=>x.id===b.dataset.id);
-    const ta=document.getElementById("txt");ta.value=email(i);
-    document.getElementById("dlg").showModal();ta.select();
-  });
+  document.getElementById("vcal").classList.toggle("hide",F.vis!=="cal");
+  document.getElementById("vlista").classList.toggle("hide",F.vis!=="lista");
+  if(F.vis==="cal")renderCal(); else renderLista();
 }
-document.getElementById("cp").onclick=async()=>{
-  const ta=document.getElementById("txt");ta.select();
+
+document.querySelectorAll(".chip[data-g]").forEach(b=>b.onclick=()=>{
+  const g=b.dataset.g;
+  document.querySelectorAll(`.chip[data-g="${g}"]`).forEach(o=>o.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true"); F[g]=b.dataset.v; render();
+});
+document.getElementById("ant").onclick=()=>{const[Y,M]=mesAtual.split("-").map(Number);
+  const d=new Date(Y,M-2,1);mesAtual=iso(d).slice(0,7);renderCal()};
+document.getElementById("prox").onclick=()=>{const[Y,M]=mesAtual.split("-").map(Number);
+  const d=new Date(Y,M,1);mesAtual=iso(d).slice(0,7);renderCal()};
+document.getElementById("hoje").onclick=()=>{mesAtual=iso(HOJE).slice(0,7);renderCal()};
+document.getElementById("cp").onclick=async()=>{const ta=document.getElementById("txt");ta.select();
   try{await navigator.clipboard.writeText(ta.value)}catch(e){document.execCommand("copy")}
   const b=document.getElementById("cp");b.textContent="Copiado!";
-  setTimeout(()=>b.textContent="Copiar",1500);
-};
+  setTimeout(()=>b.textContent="Copiar",1500)};
+window.addEventListener("hashchange",rota);
 
-document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
-  const g=b.dataset.g;
-  if(g==="pass"){const on=b.getAttribute("aria-pressed")==="true";
-    b.setAttribute("aria-pressed",String(!on));F.pass=!on}
-  else{document.querySelectorAll(`.chip[data-g="${g}"]`).forEach(o=>o.setAttribute("aria-pressed","false"));
-    b.setAttribute("aria-pressed","true");F[g]=b.dataset.v}
-  render()});
-
-document.getElementById("aval").innerHTML=D.avaliacoes.map(([d,dt,t])=>`
- <div class="it ${dif(dt,HOJE)<0?"past":""}"><div class="dt"><div class="dd">${dt.slice(8)}</div>
- <div class="mm">${MES[+dt.slice(5,7)-1]}</div></div><div>
- <div class="tg"><span class="t ${d==="QNC"?"t-qnc":"t-qadl"}">${d}</span></div>
- <p class="tt">${t}</p></div></div>`).join("");
-
-const fonte=new URLSearchParams(location.search).get("fonte");
+/* ---------- carga ---------- */
+ITENS=montarItens(BASE.aulas);
 document.getElementById("rod").innerHTML=
- `Cronograma extraído dos Planejamentos PII do 2º semestre (1ª e 2ª séries) — Colégio Catarinense.
-  Feriados considerados: 07/09, 12/10, 13/10, 02/11 e 20/11.
-  Prazos e status são recalculados sempre que a página é aberta.<br>
-  Para incluir atividades novas sem republicar a página, abra este endereço com
-  <code>?fonte=LINK_DA_PLANILHA_CSV</code>.
-  Abrindo com <code>?prof=1</code> aparecem os botões de e-mail para o Christian (só para o professor).
-  ${fonte?"<br><b>Fonte externa ativa.</b>":""}`;
+ `Cronograma dos Planejamentos PII do 2º semestre — Colégio Catarinense. Feriados considerados:
+  07/09, 12/10, 13/10, 02/11 e 20/11. Prazos recalculados sempre que a página é aberta.
+  ${PROF?"<br><b>Modo professor ativo.</b>":`<br>Abrindo com <code>?prof=1</code> aparecem os botões de e-mail.`}`;
+rota();
 
-render();
-if(fonte){
-  fetch(fonte).then(r=>r.ok?r.text():Promise.reject(r.status))
-   .then(t=>{const n=aplicar(t); render();
-     if(!n)document.getElementById("erro").innerHTML=
-       '<div class="err">A planilha foi lida, mas nenhuma linha válida foi encontrada. Confira se existem as colunas <b>Data</b> e <b>Título</b>.</div>';})
-   .catch(e=>{document.getElementById("erro").innerHTML=
-     '<div class="err">Não foi possível ler a planilha indicada ('+e+'). O calendário abaixo é o cronograma fixo.</div>';});
+const fontes = [new URLSearchParams(location.search).get("fonte"), CFG.eventosCsv, CFG.eventosCsvAlt].filter(Boolean);
+function carregar(k){
+  if(k>=fontes.length){
+    document.getElementById("erro").innerHTML=
+      '<div class="err">Não consegui ler a planilha de eventos. Mostrando o cronograma fixo, que pode estar desatualizado.'
+      + (CFG.planilhaUrl?' Confira se a planilha está compartilhada como “qualquer pessoa com o link · leitor”.':'')
+      + '</div>';
+    return;
+  }
+  fetch(fontes[k]).then(r=>r.ok?r.text():Promise.reject("HTTP "+r.status))
+   .then(t=>{
+     if(!aplicarPlanilha(t)){carregar(k+1);return}
+     document.getElementById("erro").innerHTML="";
+     rota();
+   })
+   .catch(()=>carregar(k+1));
+}
+if(fontes.length)carregar(0);
+
+if(CFG.comentariosCsv){
+  fetch(CFG.comentariosCsv).then(r=>r.ok?r.text():Promise.reject("HTTP "+r.status))
+   .then(t=>{aplicarComentarios(t);rota()})
+   .catch(()=>{});
 }
 </script>
-</body></html>
+</body>
+</html>
